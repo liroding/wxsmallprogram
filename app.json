@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index_bakcup/index", 
+    "pages/idmessage/idmessage",    
+
+    "pages/testpage/test",
+    
+    "pages/logs/logs"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "MiniProgram",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

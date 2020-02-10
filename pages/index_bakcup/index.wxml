@@ -1,0 +1,26 @@
+<!--pages/index_bakcup/index.wxml-->
+<text>pages/index_bakcup/index.wxml</text>
+
+<view class="context">
+  <view class="box" bindtap='inputid_message' hover-class="hover_outer" hover-stay-time="1000"> 
+    <image class="img" mode="scaleToFill" src="/resources/index_bakcup/1.png"></image>
+  </view>
+  <view class="box" bindtap='inputcase_message' hover-class="hover_outer" hover-stay-time="1000"> 
+    <image class="img" mode="scaleToFill" src="/resources/index_bakcup/2.png"></image>
+  </view>
+
+</view>
+
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+
