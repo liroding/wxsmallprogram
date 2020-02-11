@@ -33,37 +33,7 @@ App({
         }
       }
     })
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res.code)
-        
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (res.code) {
-          wx.request({
-            url: 'http://47.94.80.84:8000/wxapp/onlogin',
-            method: "GET",
-            data: {
-              "code": res.code,
-              "username": this.globalData.userInfo
-            },
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: function (res) {
-              console.log(res)
-              if (res.data.openid) {
-                wx.setStorage({
-                  key: "tokenId",
-                  data: res.data.openid,
-                })
-              }
-            }
-          })
-        }
 
-      }
-    })
 
   },
   globalData: {
