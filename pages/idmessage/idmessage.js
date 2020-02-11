@@ -11,6 +11,31 @@ Page({
 
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    wx.request({
+      url: 'http://47.94.80.84:8000/wxapp/usermesgsubmit',
+      method: "POST",
+      data: {
+        "name": e.detail.value.user,
+        "checkbox": e.detail.value.checkbox,
+        "age": e.detail.value.age,
+        "department": e.detail.value.department,
+        "telephone": e.detail.value.telephone,
+        "authsession": app.globalData.authsession,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
+      },
+      success: function (res) {
+        console.log(res.data)
+        wx.navigateTo({
+          url: '../feedbackpage/idmesg/idmesg?info='+res.data,
+          success: function (res) {
+            // 通过eventChannel向被打开页面传送数据
+            console.log('navigate to feedback page')
+          }
+        })
+      }
+    })
   },
   formReset: function () {
     console.log('form发生了reset事件')

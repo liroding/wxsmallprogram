@@ -1,12 +1,11 @@
 {
   "pages": [
-    "pages/index_bakcup/index", 
+ 
+    "pages/index/index", 
     "pages/idmessage/idmessage",    
-
     "pages/testpage/test",
-    
-    "pages/logs/logs"
-    
+    "pages/logs/logs",
+    "pages/feedbackpage/idmesg/idmesg"
   ],
   "window": {
     "backgroundTextStyle": "light",

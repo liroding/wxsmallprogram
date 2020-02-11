@@ -38,5 +38,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    authsession:null,
+    wxcodereqflag:1,
   }
 })

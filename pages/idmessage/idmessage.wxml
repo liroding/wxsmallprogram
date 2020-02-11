@@ -10,7 +10,7 @@
       <view class="section">
         <view class="section__title">姓名：</view>
         <view class="weui-cell weui-cell_input">
-        <input class="weui-input" name="input"  placeholder="Input you name"/>
+        <input class="weui-input" name="user"  placeholder="Input you name"/>
         </view>
       </view>
 
@@ -18,8 +18,8 @@
         <view class="section__title">性别：</view>
         <view class="weui-cell weui-cell_input">
         <checkbox-group name="checkbox">
-          <label><checkbox value="checkbox1"/>男</label>
-          <label><checkbox value="checkbox2"/>女</label>
+          <label><checkbox value="man"/>男</label>
+          <label><checkbox value="women"/>女</label>
         </checkbox-group>
         </view>
       </view>
