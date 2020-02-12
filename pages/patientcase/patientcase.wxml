@@ -1,0 +1,82 @@
+<!--pages/patientcase/patientcase.wxml-->
+<text>pages/patientcase/patientcase.wxml</text>
+<view class="weui-cells__title">
+<text>健康诊断表\n</text>
+</view>
+<view class="">
+<text>请认真填写以下内容\n\n</text>
+</view>
+<view > 
+      <view class="section">
+        <view class="section__title">1. 是否出现以下情况</view>
+        <view class="weui-cell weui-cell_input">
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox" wx:for="{{items}}">
+                <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                <view></view>
+            </label>
+        </checkbox-group>
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section__title">2. 是否检查过</view>
+        <view class="weui-cell weui-cell_input">
+            <checkbox-group bindchange="checkboxChange">
+                <label class="checkbox" wx:for="{{items_1}}">
+                  <checkbox value="{{item_1.name}}" checked="{{item_1.checked}}"/>{{item.value}}
+                <view></view>
+                </label>
+            </checkbox-group>
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section__title">3. 选择</view>
+        <view class="weui-cell weui-cell_input">
+              <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+              <view class="picker">
+                 当前选择：{{array[index]}}
+              </view>
+              </picker>
+        </view>
+      </view>
+
+
+      <view class="section">
+        <view class="section__title">4. 多选择</view>
+        <view class="weui-cell weui-cell_input">
+                  <picker mode="multiSelector" bindchange="bindMultiPickerChange"       bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                        <view class="picker">当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+                        </view>
+                  </picker>
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section__title">5. 其他：</view>
+        <view class="weui-cell weui-cell_input">
+        <input class="weui-input" name="other"  placeholder="option"/>
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="section__title">6. 提交材料 </view>
+        <view class="weui-cell weui-cell_input">
+              <view>   
+                  <image class="imgbtn" style="width: 600rpx; height: 300rpx; background-color: #eeeeee;"  src="{{img}}"></image>
+                  
+                  <button class="btn" type="warn" size="mini" bindtap="chooseimage" >选择图片</button>
+              </view>
+              
+              <view>
+                  
+              </view> 
+              
+        </view>
+      </view>
+
+
+</view>
+
+

@@ -17,9 +17,14 @@ Page({
       url: '../idmessage/idmessage'
     })
   },
-  inputcase_message: function () {
+  showlog_message: function () {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  inputcase_message: function () {
+    wx.navigateTo({
+      url: '../patientcase/patientcase'
     })
   },
   /**

@@ -1,0 +1,15 @@
+/* pages/patientcase/patientcase.wxss */
+@import '../../lib/weui.wxss';
+.section{
+  width: 95%;
+  height:100%;
+  margin:8px;
+  background-color:white;
+}
+
+.btn {
+  margin: 80rpx;
+}
+.imgbtn {
+  margin: 20rpx;
+}
