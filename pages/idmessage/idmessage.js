@@ -12,7 +12,7 @@ Page({
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.request({
-      url: 'http://47.94.80.84:8000/wxapp/usermesgsubmit',
+      url: 'http://39.107.48.2:8000/wxapp/usermesgsubmit',
       method: "POST",
       data: {
         "name": e.detail.value.user,

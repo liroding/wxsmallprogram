@@ -116,7 +116,7 @@ Page({
         var authsession = wx.getStorageSync('authsession')
         
         wx.uploadFile({
-          url: 'http://47.94.80.84:8000/wxapp/fileupload', //仅为示例，非真实的接口地址
+          url: 'http://39.107.48.2:8000/wxapp/fileupload', //仅为示例，非真实的接口地址
           filePath: res.tempFilePaths[0],
           name: 'file',
           formData: {

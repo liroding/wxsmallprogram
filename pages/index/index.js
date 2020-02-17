@@ -45,7 +45,7 @@ Page({
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
             if (res.code) {
               wx.request({
-                url: 'http://47.94.80.84:8000/wxapp/onlogin',
+                url: 'http://39.107.48.2:8000/wxapp/onlogin',
                 method: "GET",
                 data: {
                   "code": res.code,
@@ -94,7 +94,7 @@ Page({
               // 发送 res.code 到后台换取 openId, sessionKey, unionId
               if (res.code) {
                 wx.request({
-                  url: 'http://47.94.80.84:8000/wxapp/onlogin',
+                  url: 'http://39.107.48.2:8000/wxapp/onlogin',
                   method: "GET",
                   data: {
                     "code": res.code,
