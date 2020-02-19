@@ -13,6 +13,11 @@
     <image class="img" mode="scaleToFill" src="/resources/index_bakcup/3.png"></image>
   </view>
 
+  
+  <view class="box" bindtap='download_message' hover-class="hover_outer" hover-stay-time="1000"> 
+    <image class="img" mode="scaleToFill" src="/resources/index_bakcup/upload.jpg"></image>
+  </view>
+
 </view>
 
 <view class="container">

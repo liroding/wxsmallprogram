@@ -10,32 +10,50 @@ Page({
   },
 
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    wx.request({
-      url: 'http://39.107.48.2:8000/wxapp/usermesgsubmit',
-      method: "POST",
-      data: {
-        "name": e.detail.value.user,
-        "checkbox": e.detail.value.checkbox,
-        "age": e.detail.value.age,
-        "department": e.detail.value.department,
-        "telephone": e.detail.value.telephone,
-        "authsession": app.globalData.authsession,
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
-      },
+
+    console.log('[liro-debug]:form发生了submit事件，携带数据为：', e.detail.value)
+    wx.showModal({
+      title: '提示',
+      content: '再确认是否提交',
       success: function (res) {
-        console.log(res.data)
-        wx.navigateTo({
-          url: '../feedbackpage/idmesg/idmesg?info='+res.data,
-          success: function (res) {
-            // 通过eventChannel向被打开页面传送数据
-            console.log('navigate to feedback page')
-          }
-        })
+        if (res.confirm) {//这里是点击了确定以后
+          console.log('[liro-debug]:确认提交')
+
+          wx.request({
+            url: 'http://39.107.48.2:8000/wxapp/usermesgsubmit',
+            method: "POST",
+            data: {
+              "name": e.detail.value.user,
+              "checkbox": e.detail.value.checkbox,
+              "age": e.detail.value.age,
+              "department": e.detail.value.department,
+              "telephone": e.detail.value.telephone,
+              "authsession": app.globalData.authsession,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
+            },
+            success: function (res) {
+              console.log(res.data)
+              wx.navigateTo({
+                url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
+                success: function (res) {
+                  // 通过eventChannel向被打开页面传送数据
+                  console.log('navigate to feedback page')
+                }
+              })
+            }
+          })
+
+
+        } else {//这里是点击了取消以后
+          console.log('[liro-debug]:不提交')
+        }
       }
     })
+
+  
+
   },
   formReset: function () {
     console.log('form发生了reset事件')

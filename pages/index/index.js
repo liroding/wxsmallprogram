@@ -27,6 +27,30 @@ Page({
       url: '../patientcase/patientcase'
     })
   },
+  download_message: function () {
+    if (app.globalData.userInfo.nickName == 'ding-丁'){
+      console.log(app.globalData.userInfo.nickName)
+      wx.navigateTo({
+        url: '../download/download'
+      })
+    }else{
+      console.log('[liro-debug]:no access rights !!!')
+
+      wx.showModal({
+        title: '提示',
+        content: '您没有权限访问此功能',
+        success: function (res) {
+          if (res.confirm) {//这里是点击了确定以后
+            console.log('[liro-debug]:用户点击确定')
+          } else {//这里是点击了取消以后
+            console.log('[liro-debug]:用户点击取消')
+          }
+        }
+      })
+
+    }
+  
+  },
   /**
    * 生命周期函数--监听页面加载
    */

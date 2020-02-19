@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/download/download",
+
     "pages/patientcase/patientcase",
+
     "pages/idmessage/idmessage",
     "pages/testpage/test",
     "pages/logs/logs",
