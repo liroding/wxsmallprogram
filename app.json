@@ -1,12 +1,16 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/introducearticle/introducearticle",
+    "pages/testpage/test",
+ 
     "pages/download/download",
 
     "pages/patientcase/patientcase",
 
     "pages/idmessage/idmessage",
-    "pages/testpage/test",
+
     "pages/logs/logs",
     "pages/feedbackpage/idmesg/idmesg",
     "pages/feedbackpage/patientcase/patientcase"

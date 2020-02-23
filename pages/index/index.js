@@ -12,21 +12,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  inputid_message: function () {
-    wx.navigateTo({
-      url: '../idmessage/idmessage'
-    })
-  },
-  showlog_message: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  inputcase_message: function () {
-    wx.navigateTo({
-      url: '../patientcase/patientcase'
-    })
-  },
+
   download_message: function () {
     if (app.globalData.userInfo.nickName == 'ding-丁'){
       console.log(app.globalData.userInfo.nickName)
