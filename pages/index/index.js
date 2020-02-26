@@ -10,7 +10,8 @@ Page({
     motto: 'Every Step Is Progress',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    flag: null
   },
 
   download_message: function () {
@@ -44,7 +45,8 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        flag: 1   //add by liro new
       })
 
       // 登录  add by ding to send username & code 
@@ -93,7 +95,8 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
+          hasUserInfo: true,
+          flag:1   //add by liro new
         })
 
         if (app.globalData.wxcodereqflag) {
@@ -131,12 +134,8 @@ Page({
           })
 
           app.globalData.wxcodereqflag = 0
+         
         }
-
-
-        
-
-
 
       }
     } else {
@@ -168,7 +167,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
+    
   },
 
   /**

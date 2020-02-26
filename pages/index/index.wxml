@@ -23,16 +23,20 @@
         <view class="weui-grid__label">健康诊断表</view>
       </navigator>
 
-      <navigator url=" " class="weui-grid" hover-class="weui-grid_active">
-        <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />
-        <view class="weui-grid__label" bindtap='download_message'>表格下载</view>
-      </navigator>
 
       <navigator url="../introducearticle/introducearticle" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />
         <view class="weui-grid__label" bindtap='download_message'>系统简介</view>
       </navigator>
+      
 
+      <view wx:if="{{userInfo.nickName == 'ding-丁'}}">
+      <navigator url=" " class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />
+        <view class="weui-grid__label" bindtap='download_message'>表格下载</view>
+      </navigator>
+      </view>
+      
     </view>
 
     
@@ -40,6 +44,7 @@
   </view>
 
 </view>
+
 
 
 <view class="container">
