@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+
     "pages/index/index",
     "pages/introducearticle/introducearticle",
     "pages/testpage/test",
@@ -13,7 +13,9 @@
 
     "pages/logs/logs",
     "pages/feedbackpage/idmesg/idmesg",
-    "pages/feedbackpage/patientcase/patientcase"
+    "pages/feedbackpage/patientcase/patientcase",
+
+    "pages/Preview/Preview"
   ],
   "window": {
     "backgroundTextStyle": "light",

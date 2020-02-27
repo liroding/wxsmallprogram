@@ -18,7 +18,6 @@ Page({
       success: function (res) {
         if (res.confirm) {//这里是点击了确定以后
           console.log('[liro-debug]:确认提交')
-
           wx.request({
             url: 'http://39.107.48.2:8000/wxapp/usermesgsubmit',
             method: "POST",

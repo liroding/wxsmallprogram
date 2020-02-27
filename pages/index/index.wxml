@@ -36,7 +36,13 @@
         <view class="weui-grid__label" bindtap='download_message'>表格下载</view>
       </navigator>
       </view>
-      
+
+      <navigator url="../Preview/Preview" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />
+        <view class="weui-grid__label" bindtap='Preview_message'>表单确认</view>
+      </navigator>
+
+
     </view>
 
     
