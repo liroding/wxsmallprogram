@@ -1,13 +1,14 @@
 {
   "pages": [
-
+  
     "pages/index/index",
+
+    "pages/patientcase/patientcase",
+    
     "pages/introducearticle/introducearticle",
     "pages/testpage/test",
  
     "pages/download/download",
-
-    "pages/patientcase/patientcase",
 
     "pages/idmessage/idmessage",
 

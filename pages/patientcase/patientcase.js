@@ -1,21 +1,26 @@
 // pages/patientcase/patientcase.js
+
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    itemsdata:{},
+    itemsdata_2: {},
     //1
     items: [
-      { name: 'USA', value: '是否抽烟' },
-      { name: 'CHN', value: '是否喝酒', checked: 'true' },
-      { name: 'BRA', value: '是否头疼' },
-      { name: 'JPN', value: '其他' },
+      { name: '1—1', value: '是否抽烟' },
+      { name: '1-2', value: '是否喝酒'},
+      { name: '1-3', value: '是否头疼' },
+      { name: '1-4', value: '其他' },   // checked: 'true'
     ],
     //2
     items_2: [
-      { name: 'yes', value: '检出过' },
-      { name: 'no', value: '未检查过', checked: 'true' },
+      { name: '2-1', value: '检出过' },
+      { name: '2-2', value: '未检查过' },  //checked: 'true'
     ],
     //3
     array: ['美国', '中国', '巴西', '日本'],
@@ -88,18 +93,18 @@ Page({
     img: '/resources/index_bakcup/1.png'
   },
 
-
   checkboxChange_1: function (e) {
+    var mythis = this 
     console.log('checkboxChange_1发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      itemsdata: e.detail.value
     })
   },
 
   checkboxChange_2: function (e) {
     console.log('checkboxChange_2发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      itemsdata_2: e.detail.value
     })
   },
 
@@ -171,23 +176,22 @@ Page({
   },
 
   formSubmit: function (e) {
-    console.log('[liro-debug]:form发生了submit事件，携带数据为：', e.detail.value)
+    var mythis = this
+    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata=', mythis.data.itemsdata)
+    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata_2=', mythis.data.itemsdata_2)
     wx.showModal({
       title: '提示',
       content: '再确认是否提交',
       success: function (res) {
         if (res.confirm) {//这里是点击了确定以后
           console.log('[liro-debug]:确认提交')
-/*
+
           wx.request({
-            url: 'http://39.107.48.2:8000/wxapp/usermesgsubmit',
+            url: 'http://39.107.48.2:8000/wxapp/patientcasemesgsubmit',
             method: "POST",
             data: {
-              "name": e.detail.value.user,
-              "checkbox": e.detail.value.checkbox,
-              "age": e.detail.value.age,
-              "department": e.detail.value.department,
-              "telephone": e.detail.value.telephone,
+              "itemsdata": mythis.data.itemsdata,
+              "itemsdata_2": mythis.data.itemsdata_2,
               "authsession": app.globalData.authsession,
             },
             header: {
@@ -195,6 +199,8 @@ Page({
             },
             success: function (res) {
               console.log(res.data)
+
+/*
               wx.navigateTo({
                 url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
                 success: function (res) {
@@ -202,9 +208,12 @@ Page({
                   console.log('navigate to feedback page')
                 }
               })
+*/
+
             }
           })
-*/
+
+
 
         } else {//这里是点击了取消以后
           console.log('[liro-debug]:不提交')

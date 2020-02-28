@@ -46,13 +46,13 @@
 
             </view>
             <view class="weui-form-preview__ft">
-                <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
+                <navigator url="../idmessage/idmessage" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">重新填写</navigator>
             </view>
         </view>
         <view class="weui-form-preview">
             <view class="weui-form-preview__hd">
                 <view class="weui-form-preview__label">健康诊断表</view>
-                <view class="weui-form-preview__value_in-hd">¥2400.00</view>
+                
             </view>
             <view class="weui-form-preview__bd">
                 <view class="weui-form-preview__item">
@@ -63,7 +63,7 @@
             </view>
             <view class="weui-form-preview__ft">
                 <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">辅助操作</navigator>
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
+                <navigator url="../patientcase/patientcase" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
             </view>
         </view>
     </view>
