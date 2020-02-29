@@ -9,17 +9,15 @@ App({
     const res = wx.getSystemInfoSync()
     console.log(res.model)
 ////////////////////////////////////////   
-
+     
     // 获取用户信息
     wx.getSetting({
       success: res => {
-       // console.log(res)
-        if (res.authSetting['scope.userInfo']) {
-          
+        console.log(res)
+        if (res.authSetting['scope.userInfo']) { 
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               console.log(this.globalData.userInfo)
@@ -30,6 +28,25 @@ App({
               }
             }
           })
+        }else{
+
+          wx.showModal({
+            title: '登陆提示',
+            content: '您首次使用，点击获取头像授权',
+            success: function (res) {
+              if (res.confirm) {//这里是点击了确定以后
+                console.log('[liro-debug]:确认授权')    
+              } else {//这里是点击了取消以后
+                console.log('[liro-debug]:不授权')
+                wx.navigateBackMiniProgram({
+                  complete: (res) => {
+                    delta: 1
+                  },
+                })
+              }
+            }
+          })
+
         }
       }
     })

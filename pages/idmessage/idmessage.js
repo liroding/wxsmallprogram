@@ -19,7 +19,7 @@ Page({
         if (res.confirm) {//这里是点击了确定以后
           console.log('[liro-debug]:确认提交')
           wx.request({
-            url: 'http://39.107.48.2:8000/wxapp/usermesgsubmit',
+            url: 'https://dingyinglai.site/wxapp/usermesgsubmit',
             method: "POST",
             data: {
               "name": e.detail.value.user,

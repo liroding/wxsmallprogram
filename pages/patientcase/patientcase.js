@@ -137,7 +137,7 @@ Page({
         var authsession = wx.getStorageSync('authsession')
         
         wx.uploadFile({
-          url: 'http://39.107.48.2:8000/wxapp/fileupload', //仅为示例，非真实的接口地址
+          url: 'https://dingyinglai.site/wxapp/fileupload', //仅为示例，非真实的接口地址
           filePath: res.tempFilePaths[0],
           name: 'file',
           formData: {
@@ -187,7 +187,7 @@ Page({
           console.log('[liro-debug]:确认提交')
 
           wx.request({
-            url: 'http://39.107.48.2:8000/wxapp/patientcasemesgsubmit',
+            url: 'https://dingyinglai.site/wxapp/patientcasemesgsubmit',
             method: "POST",
             data: {
               "itemsdata": mythis.data.itemsdata,

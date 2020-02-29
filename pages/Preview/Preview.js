@@ -28,7 +28,7 @@ Page({
       })
       //请求数据库，获取所有提交的信息
       wx.request({
-         url: 'http://39.107.48.2:8000/wxapp/querymysqldb',
+        url: 'https://dingyinglai.site/wxapp/querymysqldb',
          method: "POST",
          data: {
             "reqid": 3,    //get all submit information  id=3

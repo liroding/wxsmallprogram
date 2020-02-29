@@ -15,7 +15,7 @@ Page({
     })
     
     const downloadTask = wx.downloadFile({
-      url: 'http://39.107.48.2:8000/static/tmp/data.xls', //仅为示例，并非真实的资源
+      url: 'https://dingyinglai.site/static/tmp/data.xls', //仅为示例，并非真实的资源
       type: 'xls',
       success(res) {
         console.log(res)
