@@ -81,6 +81,11 @@ bindGetUserInfo: function (res) {
           success: res => {
             console.log('[liro-debug]: wx.code ='+res.code)  //debug
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
+
+            wx.showLoading({
+              title: '获取授权...',
+            })
+
             if (res.code) {
               wx.request({
                 url: 'https://dingyinglai.site/wxapp/onlogin',
@@ -103,7 +108,8 @@ bindGetUserInfo: function (res) {
                     })
                   }
                   //console.log('<debug>' + info.detail.userInfo.nickName)
-                  wx.navigateTo({
+                  wx.hideLoading()
+                  wx.redirectTo({
                     url: '../index/index'
                   })
                 }
@@ -128,6 +134,13 @@ bindGetUserInfo: function (res) {
                         }
                     })
         }
+},
+
+
+bindViewTap: function () {
+  wx.redirectTo({
+    url: '/pages/index/index'
+  })
 },
 
 

@@ -1,12 +1,15 @@
 // pages/idmessage/idmessage.js
 const app = getApp()
+
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    authsession:null,
   },
 
   formSubmit: function (e) {
@@ -18,6 +21,12 @@ Page({
       success: function (res) {
         if (res.confirm) {//这里是点击了确定以后
           console.log('[liro-debug]:确认提交')
+          console.log('[liro-debug]:authsession=' + app.globalData.authsession)
+
+          wx.showLoading({
+            title: '提交中',
+          })
+
           wx.request({
             url: 'https://dingyinglai.site/wxapp/usermesgsubmit',
             method: "POST",
@@ -34,14 +43,17 @@ Page({
             },
             success: function (res) {
               console.log(res.data)
-              wx.navigateTo({
+              wx.hideLoading()
+              wx.redirectTo({
                 url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
                 success: function (res) {
                   // 通过eventChannel向被打开页面传送数据
-                  console.log('navigate to feedback page')
+                  console.log('[liro-debug]: navigate to idmesg feedback page')
                 }
               })
             }
+            
+
           })
 
 
@@ -51,7 +63,6 @@ Page({
       }
     })
 
-  
 
   },
   formReset: function () {
@@ -64,6 +75,9 @@ Page({
    */
   onLoad: function (options) {
 
+    this.setData({
+      userInfo: app.globalData.userInfo,
+    })
   },
 
   /**

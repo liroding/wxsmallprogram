@@ -1,41 +1,45 @@
 <!--pages/index_bakcup/index.wxml-->
-<text>pages/index_bakcup/index.wxml</text>
+<text>pages/index/index.wxml</text>
 
 
 <view class="page">
  <view  class="page__bd">
     <view class="weui-grids">
-      <navigator url="../idmessage/idmessage" class="weui-grid" hover-class="weui-grid_active">
+      <navigator open-type="redirect" url="/pages/idmessage/idmessage" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/1.png" />
         <view class="weui-grid__label">个人信息登记</view>
       </navigator>
 
-      <navigator url="../logs/logs" class="weui-grid" hover-class="weui-grid_active">
-        <image class="weui-grid__icon" src="/resources/index_bakcup/2.png" />
-        <view class="weui-grid__label">登录状态</view>
-      </navigator>
-
-      <navigator url="../patientcase/patientcase" class="weui-grid" hover-class="weui-grid_active">
+      <navigator open-type="redirect" url="../patientcase/patientcase" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/3.png" />
         <view class="weui-grid__label">健康诊断表</view>
       </navigator>
 
-      <navigator url="../introducearticle/introducearticle" class="weui-grid" hover-class="weui-grid_active">
-        <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />
+      <navigator url="../Preview/Preview" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/resources/index_bakcup/5.jpg" />
+        <view class="weui-grid__label" bindtap='Preview_message'>表单确认</view>
+      </navigator>
+
+      <navigator open-type="redirect" url="../logs/logs" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/resources/index_bakcup/2.png" />
+        <view class="weui-grid__label">登录状态</view>
+      </navigator>
+
+
+
+      <navigator open-type="redirect" url="../introducearticle/introducearticle" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/resources/index_bakcup/6.jpg" />
         <view class="weui-grid__label" bindtap='download_message'>系统简介</view>
       </navigator>
 
       <view wx:if="{{userInfo.nickName == 'ding-丁'}}">
-      <navigator url=" " class="weui-grid" hover-class="weui-grid_active">
+      <navigator open-type="redirect" url=" " class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />
         <view class="weui-grid__label" bindtap='download_message'>表格下载</view>
       </navigator>
       </view>
 
-      <navigator url="../Preview/Preview" class="weui-grid" hover-class="weui-grid_active">
-        <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />
-        <view class="weui-grid__label" bindtap='Preview_message'>表单确认</view>
-      </navigator>
+
 
     </view>
 

@@ -5,7 +5,7 @@
       <text>{{info}}</text>
   </view>
   <view class="btn-area section">
-      <navigator url="/pages/index/index" hover-class="navigator-hover">回首页</navigator>
+      <navigator open-type="redirect" url="/pages/index/index" hover-class="navigator-hover">回首页</navigator>
   </view>
 </view>
 

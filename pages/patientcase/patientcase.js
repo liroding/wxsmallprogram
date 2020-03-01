@@ -186,6 +186,10 @@ Page({
         if (res.confirm) {//这里是点击了确定以后
           console.log('[liro-debug]:确认提交')
 
+          wx.showLoading({
+            title: '提交中',
+          })
+
           wx.request({
             url: 'https://dingyinglai.site/wxapp/patientcasemesgsubmit',
             method: "POST",
@@ -199,16 +203,15 @@ Page({
             },
             success: function (res) {
               console.log(res.data)
-
-/*
+             
+              wx.hideLoading()
               wx.navigateTo({
-                url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
+                url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
                 success: function (res) {
                   // 通过eventChannel向被打开页面传送数据
-                  console.log('navigate to feedback page')
+                  console.log('[liro-debug]: navigate to patientcase feedback page')
                 }
               })
-*/
 
             }
           })

@@ -2,6 +2,7 @@
 
 <view class="weui-cells__title">
 <text>个人基本信息采集 \n</text>
+
 </view>
 
 <form bindsubmit="formSubmit" bindreset="formReset">

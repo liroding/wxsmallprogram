@@ -32,7 +32,7 @@ App({
 
           wx.showModal({
             title: '登陆提示',
-            content: '您首次使用，点击获取头像授权',
+            content: '您首次使用，点击授权按钮',
             success: function (res) {
               if (res.confirm) {//这里是点击了确定以后
                 console.log('[liro-debug]:确认授权')    

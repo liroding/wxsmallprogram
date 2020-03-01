@@ -16,6 +16,25 @@ Page({
     this.setData({
       info: options.info,
     })
+    wx.showModal({
+      title: '提示',
+      content: options.info + '第三项：【确认表单】',
+      showCancel: false,
+      confirmText: '回首页',
+      success: function (res) {
+             if (res.confirm) {
+                console.log('[liro-debug]: 服务器返回') 
+                wx.redirectTo({
+                  url: '../../index/index',
+                  success: function (res) {
+                    // 通过eventChannel向被打开页面传送数据
+                    console.log('[liro-debug]: navigate to feedback page')
+                  }
+                })
+
+            }
+          }
+      })
   },
 
   /**

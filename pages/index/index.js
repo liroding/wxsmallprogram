@@ -13,7 +13,7 @@ Page({
   download_message: function () {
     if (app.globalData.userInfo.nickName == 'ding-丁'){
       console.log(app.globalData.userInfo.nickName)
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../download/download'
       })
     }else{
@@ -38,12 +38,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+  var authsession = wx.getStorageSync('authsession')
+  app.globalData.authsession = authsession
+
   this.setData({
       userInfo: app.globalData.userInfo,
     })
   console.log("[liro-debug]:index page onload")
-    
+  console.log("[liro-debug]:index page app.globalData.authsession =" + app.globalData.authsession)
   },
   getUserInfo: function (e) {
        console.log(e) 
