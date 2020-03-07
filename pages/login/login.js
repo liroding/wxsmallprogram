@@ -138,7 +138,7 @@ bindGetUserInfo: function (res) {
 
 
 bindViewTap: function () {
-  wx.redirectTo({
+  wx.navigateTo({
     url: '/pages/index/index'
   })
 },

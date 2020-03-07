@@ -2,15 +2,41 @@
 <text>pages/index/index.wxml</text>
 
 
+<view class="page-section page-section-spacing swiper">
+      <swiper
+        indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+        interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}rpx" next-margin="{{nextMargin}}rpx">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item >
+            <image src="{{item}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+</view>
+
+<view class="weui-flex section">
+  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <view class="weui-flex__item"><view >  </view></view>
+        <view class="weui-flex__item ">
+                <view class="value ">昵称</view>
+                <view class="caption">{{userInfo.nickName}}</view>
+        </view>
+</view>
+
+
+<view>
+   <text>\n</text>
+</view>
+
 <view class="page">
  <view  class="page__bd">
     <view class="weui-grids">
-      <navigator open-type="redirect" url="/pages/idmessage/idmessage" class="weui-grid" hover-class="weui-grid_active">
+      <navigator  url="/pages/idmessage/idmessage" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/1.png" />
         <view class="weui-grid__label">个人信息登记</view>
       </navigator>
 
-      <navigator open-type="redirect" url="../patientcase/patientcase" class="weui-grid" hover-class="weui-grid_active">
+      <navigator  url="../patientcase/patientcase" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/3.png" />
         <view class="weui-grid__label">健康诊断表</view>
       </navigator>
@@ -20,14 +46,14 @@
         <view class="weui-grid__label" bindtap='Preview_message'>表单确认</view>
       </navigator>
 
-      <navigator open-type="redirect" url="../logs/logs" class="weui-grid" hover-class="weui-grid_active">
+      <navigator url="../logs/logs" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/2.png" />
         <view class="weui-grid__label">登录状态</view>
       </navigator>
 
 
 
-      <navigator open-type="redirect" url="../introducearticle/introducearticle" class="weui-grid" hover-class="weui-grid_active">
+      <navigator url="../introducearticle/introducearticle" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/6.jpg" />
         <view class="weui-grid__label" bindtap='download_message'>系统简介</view>
       </navigator>
@@ -38,19 +64,27 @@
         <view class="weui-grid__label" bindtap='download_message'>表格下载</view>
       </navigator>
       </view>
-
-
-
     </view>
-
-    
-
   </view>
 
 </view>
 
 
+<view>
+   <text>\n</text>
+   <text>\n</text>
+   <text>\n</text>
+   <text>\n</text>
 
+</view>
+
+<!-- 页底 -->
+<view class="weui-footer">
+    <view class="weui-footer__links">
+        <navigator url="" class="weui-footer__link">智能信息采集系统</navigator>
+    </view>
+    <view class="weui-footer__text">Copyright © dyl</view>
+</view>
 
 
 

@@ -1,5 +1,8 @@
 {
   "pages": [
+
+   
+
     "pages/login/login",
     "pages/idmessage/idmessage",
 
@@ -8,11 +11,11 @@
     "pages/patientcase/patientcase",
     
     "pages/introducearticle/introducearticle",
-    "pages/testpage/test",
+  
  
     "pages/download/download",
 
-
+    "pages/testpage/test",
 
     "pages/logs/logs",
     "pages/feedbackpage/idmesg/idmesg",

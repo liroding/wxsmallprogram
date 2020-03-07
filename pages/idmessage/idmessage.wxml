@@ -11,7 +11,7 @@
       <view class="section">
         <view class="section__title">姓名：</view>
         <view class="weui-cell weui-cell_input">
-        <input class="weui-input" name="user"  placeholder="Input you name"/>
+        <input class="weui-input" name="user" auto-focus="true"  placeholder="Input you name"/>
         </view>
       </view>
 
@@ -28,7 +28,7 @@
       <view class="section">
         <view class="section__title">年龄：</view>
         <view class="weui-cell weui-cell_input">
-        <input class="weui-input" name="age"  placeholder="Input you age"/>
+        <input class="weui-input" type="number" name="age" maxlength="2" placeholder="Input you age"/>
         </view>
       </view>
 
@@ -42,14 +42,14 @@
       <view class="section">
         <view class="section__title">联系方式：</view>
         <view class="weui-cell weui-cell_input">
-        <input class="weui-input" name="telephone"  placeholder="Input you telephone"/>
+        <input class="weui-input" type="number" maxlength="11" name="telephone"  placeholder="Input you telephone"/>
         </view>
       </view>
 
       <view class="section">
         <view class="section__title">其他：</view>
         <view class="weui-cell weui-cell_input">
-        <textarea auto-focus="true" style="height: 3em" placeholder="选填" />
+        <textarea  style="height: 3em" placeholder="选填" />
         </view>
       </view>
 

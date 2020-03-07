@@ -1,4 +1,7 @@
 // pages/download/download.js
+const app = getApp()
+
+
 Page({
 
   /**
@@ -13,44 +16,48 @@ Page({
     this.setData({
       plain: !this.data.plain
     })
-    
-    const downloadTask = wx.downloadFile({
-      url: 'https://dingyinglai.site/static/tmp/data.xls', //仅为示例，并非真实的资源
-      type: 'xls',
-      success(res) {
-        console.log(res)
-        const filePath = res.tempFilePath
-        wx.openDocument({
-          filePath: filePath,
-          success: function (res) {
-            console.log(res)
-            console.log('打开文档成功')
-          }
-        })
+    wx.showLoading({
+      title: '下载中...',
+    })
+    //trigger server create xls file
+    wx.request({
+      url: 'https://dingyinglai.site/wxapp/handlemysqltoxls',
+      method: "POST",
+      data: {
+        "authsession": app.globalData.authsession,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
+      },
+      success: function (res) {
+        
+        console.log('[liro-debug]:server return status,', res.data)
 
- /*       
-        console.log(res.tempFilePath)
-        const tempFilePaths = res.tempFilePath
-        wx.saveFile({
-          tempFilePath: tempFilePaths,
-          
+        const downloadTask = wx.downloadFile({
+          url: 'https://dingyinglai.site/static/tmp/mysqldb.xls', //仅为示例，并非真实的资源
+          type: 'xls',
           success(res) {
-            console.log('2222222')
-            const savedFilePath = res.savedFilePath
-            console.log(savedFilePath)
+            console.log(res)
+            const filePath = res.tempFilePath
             wx.openDocument({
-              filePath: savedFilePath,
+              filePath: filePath,
               success: function (res) {
+                wx.hideLoading()
+                console.log(res)
                 console.log('打开文档成功')
               }
             })
-           
-          }
+    
+          }   
         })
-*/
 
-      }   
+
+
+      }
+  
     })
+    
+
 /*
     downloadTask.onProgressUpdate((res) => {
       console.log('下载进度', res.progress)

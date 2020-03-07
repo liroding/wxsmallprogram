@@ -47,3 +47,49 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.placeholder{
+  margin: 10px;
+  padding: 0 10px;
+  text-align: center;
+  background-color: rgb(247, 242, 242);
+  height: 2.3em;
+  line-height: 2.3em;
+  color: rgba(0,0,0,.3);
+  color: rgb(172, 51, 51);
+  font-size: 22px;
+}
+
+.section{
+  border-style:solid;
+  border-width: 5rpx 5rpx 5rpx 5rpx;
+  border-color: rgb(218, 47, 47);
+  width: 95%;
+  height:9%;
+  margin:10rpx;
+  background-color:#faf6f6;
+  display: flex;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+   width: 80rpx;
+   height: 80rpx;
+   margin: 20rpx;
+   border-radius: 50%;
+   display: flex;
+ }
+
+.value {
+  font-size: 30rpx;
+  padding-top: 2rpx;
+  color: #fd9900;
+  display: flex;
+}
+
+.caption {
+  margin-top: 0rpx;
+  color: rgb(170, 70, 70);
+  font-size: 25rpx;
+  display: flex;
+}

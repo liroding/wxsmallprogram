@@ -7,13 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+
+    background: ['/resources/index_bakcup/pic1.jpg', '/resources/index_bakcup/pic2.jpg', '/resources/index_bakcup/pic3.jpg'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: false,
+    interval: 2000,
+    duration: 500,
+    previousMargin: 0,
+    nextMargin: 0
+
   },
 
   download_message: function () {
     if (app.globalData.userInfo.nickName == 'ding-丁'){
       console.log(app.globalData.userInfo.nickName)
-      wx.redirectTo({
+      wx.navigateTo({
         url: '../download/download'
       })
     }else{
