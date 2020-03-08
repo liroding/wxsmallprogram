@@ -18,7 +18,7 @@ Page({
     })
     wx.showModal({
       title: '提示',
-      content: options.info + '第三项：【确认表单】',
+      content: options.info + '\r\n第三项：【确认表单】',
       showCancel: false,
       confirmText: '回首页',
       success: function (res) {

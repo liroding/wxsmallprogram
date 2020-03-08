@@ -19,6 +19,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -73,6 +76,7 @@ bindGetUserInfo: function (res) {
       console.log(info);
 
       if (info.detail.userInfo) {
+       
           console.log("[liro-debug]:点击了同意授权");
           app.globalData.userInfo = info.detail.userInfo
           var that = this
@@ -81,12 +85,12 @@ bindGetUserInfo: function (res) {
           success: res => {
             console.log('[liro-debug]: wx.code ='+res.code)  //debug
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
-
             wx.showLoading({
               title: '获取授权...',
             })
 
             if (res.code) {
+
               wx.request({
                 url: 'https://dingyinglai.site/wxapp/onlogin',
                 method: "GET",
@@ -115,6 +119,11 @@ bindGetUserInfo: function (res) {
                 }
               })
             } else {
+              wx.showToast({
+                title: '授权失败' ,  
+                icon: 'fail',
+                duration: 60000//持续的时间
+              })
               console.log('获取用户登录态失败：' + res.errMsg)
             }
 

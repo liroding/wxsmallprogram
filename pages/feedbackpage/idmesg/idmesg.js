@@ -18,7 +18,7 @@ Page({
     })
     wx.showModal({
       title: '提示',
-      content: options.info + '第二项：【健康诊断表】',
+      content: options.info + '\r\n填写第二项：【健康诊断表】',
       showCancel: false,
       confirmText: '回首页',
       success: function (res) {

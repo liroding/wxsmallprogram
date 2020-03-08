@@ -42,6 +42,11 @@ Page({
             wx.openDocument({
               filePath: filePath,
               success: function (res) {
+                wx.showToast({
+                  title: '下载成功',
+                  icon: 'success',
+                  duration: 2000
+                })
                 wx.hideLoading()
                 console.log(res)
                 console.log('打开文档成功')
