@@ -21,6 +21,8 @@ Page({
 
   },
 
+
+
   download_message: function () {
     if (app.globalData.userInfo.nickName == 'ding-丁'){
       console.log(app.globalData.userInfo.nickName)
@@ -62,7 +64,7 @@ Page({
     title: '使用说明：1> 首填写【个人信息登记】\r\n \
                      2> 再填写【健康诊断表】' ,  
     icon: 'none',
-    duration: 10000//持续的时间
+    duration: 3000//持续的时间
   })
 
 

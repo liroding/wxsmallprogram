@@ -15,8 +15,11 @@
 </view>
 
 <view class="weui-flex section">
-  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-  <view class="weui-flex__item"><view >  </view></view>
+    <view>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </view>
+    
+  <view class="weui-flex__item"></view>
         <view class="weui-flex__item ">
                 <view class="value ">昵称</view>
                 <view class="caption">{{userInfo.nickName}}</view>
@@ -71,7 +74,6 @@
 
 
 <view>
-   <text>\n</text>
    <text>\n</text>
    <text>\n</text>
    <text>\n</text>

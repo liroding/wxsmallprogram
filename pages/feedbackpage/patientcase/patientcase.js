@@ -24,7 +24,7 @@ Page({
       success: function (res) {
              if (res.confirm) {
                 console.log('[liro-debug]: 服务器返回') 
-                wx.redirectTo({
+                wx.reLaunch({
                   url: '../../index/index',
                   success: function (res) {
                     // 通过eventChannel向被打开页面传送数据
