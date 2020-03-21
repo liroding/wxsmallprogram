@@ -13,6 +13,20 @@ Page({
   },
 
   formSubmit: function (e) {
+    console.log('[liro-debug]:form ',  e.detail.value)
+    var form = e.detail.value
+    for(var item in form){
+      console.log('[liro-debug]:<1> ',  form[item])
+      if(!form[item]){
+        wx.showToast({
+          title: '请将信息填写完整',
+          icon: 'none',
+          duration: 1000
+        })
+        return;
+      }
+    }
+
 
     console.log('[liro-debug]:form发生了submit事件，携带数据为：', e.detail.value)
     wx.showModal({
