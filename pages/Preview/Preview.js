@@ -27,6 +27,11 @@ Page({
          userInfo: app.globalData.userInfo,
          authsession: app.globalData.authsession
       })
+
+      wx.showLoading({
+        title: '获取数据中',
+      })
+
       //请求数据库，获取所有提交的信息
       wx.request({
         url: 'https://dingyinglai.site/wxapp/querymysqldb',
@@ -40,6 +45,7 @@ Page({
          },
          success: function (res) {
              console.log(res.data)
+             wx.hideLoading()
              mythis.setData({
                  name: res.data.name,
                  sex: res.data.sex,

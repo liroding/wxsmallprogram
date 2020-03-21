@@ -18,6 +18,7 @@
     "pages/logs/logs",
     "pages/feedbackpage/idmesg/idmesg",
     "pages/feedbackpage/patientcase/patientcase",
+    "pages/feedbackpage/feedback/feedback",
 
     "pages/Preview/Preview"
   ],

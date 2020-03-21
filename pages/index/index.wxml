@@ -58,9 +58,14 @@
 
       <navigator url="../introducearticle/introducearticle" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/6.jpg" />
-        <view class="weui-grid__label" bindtap='download_message'>系统简介</view>
+        <view class="weui-grid__label" >系统简介</view>
       </navigator>
 
+
+      <navigator url="../feedbackpage/feedback/feedback" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/resources/index_bakcup/feedback.jpg" />
+        <view class="weui-grid__label" >意见反馈</view>
+      </navigator>
 
       <navigator url="../testpage/test" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/6.jpg" />

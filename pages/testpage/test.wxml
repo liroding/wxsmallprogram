@@ -10,9 +10,8 @@
 <button type="warn" size="mini" bindtap="botton_1" plain="{{plain}}"> botton_1 </button>
 <button type="primary" size="mini" bindtap="botton_2" plain="{{plain}}"> botton_1 </button>
 
-
-
 <button type="primary" size="mini" bindtap="testSubmit" plain="{{plain}}"> 发送订阅消息 </button>
+
 
 </view>
 
