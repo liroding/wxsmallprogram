@@ -61,6 +61,12 @@
         <view class="weui-grid__label" bindtap='download_message'>系统简介</view>
       </navigator>
 
+
+      <navigator url="../testpage/test" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/resources/index_bakcup/6.jpg" />
+      </navigator>
+
+
       <view wx:if="{{userInfo.nickName == 'ding-丁'}}">
       <navigator open-type="redirect" url=" " class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/upload.jpg" />

@@ -1,4 +1,6 @@
 // pages/wxml/index.js
+const app = getApp()
+
 Page({
 
   /**
@@ -15,24 +17,41 @@ Page({
     this.setData({
       plain: !this.data.plain
     })
-    wx.request({
-      
-      url: 'http://47.94.80.84:8000/wxapp/helloworld',
 
-      success: function (res) {
-
-        console.log(res.data)// 服务器回包信息
-        mythis.setData({
-          rdata: res.data
-        })
-      }
-
-    })
   },
   botton_2: function (e) {
     this.setData({
       plain: !this.data.plain
     })
+  },
+
+
+  testSubmit:function(e){
+
+    wx.requestSubscribeMessage({
+      tmplIds: ['yknmtxHzvfU4rE84aa9siy1iDq12eck3CEYCoQF4Vwg'], // 此处可填写多个模板 ID，但低版本微信不兼容只能授权一个
+      success (res) {
+        console.log('已授权接收订阅消息')
+      }
+    })
+
+    wx.request({
+      url: 'https://dingyinglai.site/wxapp/helloworld',
+      method: "POST",
+      data: {
+        "authsession": app.globalData.authsession,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
+      },
+      success: function (res) {
+        console.log(res.data)
+
+      }
+      
+
+    })
+
   },
   /**
    * 生命周期函数--监听页面加载

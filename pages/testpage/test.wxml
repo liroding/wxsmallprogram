@@ -9,37 +9,13 @@
 <view>
 <button type="warn" size="mini" bindtap="botton_1" plain="{{plain}}"> botton_1 </button>
 <button type="primary" size="mini" bindtap="botton_2" plain="{{plain}}"> botton_1 </button>
+
+
+
+<button type="primary" size="mini" bindtap="testSubmit" plain="{{plain}}"> 发送订阅消息 </button>
+
 </view>
 
-
-<view class="summary">
-        <image src="/images/default-avatar.png" class="avatar"></image>
-        <view class="nickname">黄秀杰</view>
-</view>
-
-
-<view class="account">
-        <view class="item">
-                <view class="value balance">0.00</view>
-                <view class="caption">余额</view>
-        </view>
-        <view class="item">
-                <view class="value coupon"></view>
-                <view class="caption">优惠</view>
-        </view>
-        <view class="item">
-                <view class="value credit">0</view>
-                <view class="caption">积分</view>
-        </view>
-</view>
-
-<view class="listview">
-        <view class="item">
-                <image class="hd" src="/images/address.png" />
-                <view class="bd">收货地址</view>
-                <view class="ft"></view>
-        </view>
-</view>
 
 
 
