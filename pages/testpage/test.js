@@ -29,7 +29,7 @@ Page({
   testSubmit:function(e){
 
     wx.requestSubscribeMessage({
-      tmplIds: ['yknmtxHzvfU4rE84aa9siy1iDq12eck3CEYCoQF4Vwg'], // 此处可填写多个模板 ID，但低版本微信不兼容只能授权一个
+      tmplIds: ['yknmtxHzvfU4rE84aa9si5LuV0gAW_7KGzEXz7FQgN0'], // 此处可填写多个模板 ID，但低版本微信不兼容只能授权一个
       success (res) {
         console.log('已授权接收订阅消息')
       }

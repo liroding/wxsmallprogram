@@ -69,6 +69,7 @@
 
       <navigator url="../testpage/test" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/6.jpg" />
+        <view class="weui-grid__label" >测试项</view>
       </navigator>
 
 
