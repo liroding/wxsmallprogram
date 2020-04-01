@@ -129,6 +129,16 @@ bindGetUserInfo: function (res) {
 
           }
         })
+
+        wx.requestSubscribeMessage({
+          tmplIds: ['yknmtxHzvfU4rE84aa9si5LuV0gAW_7KGzEXz7FQgN0'], // 此处可填写多个模板 ID，但低版本微信不兼容只能授权一个
+          tmplIds: ['8qZXmYaPl9gJsUFQmhtDb73gvkP-lKFivLyroyTpeyI'],
+          success (res) {
+            console.log('已授权接收订阅消息')
+          }
+        })
+
+
   } else {
           //用户按了拒绝按钮
         wx.showModal({

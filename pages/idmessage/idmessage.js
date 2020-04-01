@@ -56,6 +56,7 @@ Page({
             success: function (res) {
               console.log(res.data)
               wx.hideLoading()
+
               wx.redirectTo({
                 url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
                 success: function (res) {
@@ -63,6 +64,22 @@ Page({
                   console.log('[liro-debug]: navigate to idmesg feedback page')
                 }
               })
+
+              wx.request({
+                url: 'https://dingyinglai.site/wxapp/wxsubscribes',
+                method: "POST",
+                data: {
+                  "authsession": app.globalData.authsession,
+                  "subscribeid": 2,
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
+                },
+                success: function (res) {
+                  console.log(res.data)         
+                }
+              })
+
             }
             
 
