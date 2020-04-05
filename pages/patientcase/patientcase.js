@@ -11,7 +11,7 @@ Page({
     itemsdata_1: {},
     itemsdata_2: {},
     itemsdata_3: {},
-    imagesList : [],
+    caseimagesList : [],
 
     //1
     items: [
@@ -163,66 +163,12 @@ Page({
   },
   */
 
-  chooseWxImage: function (type) {
-    var that = this;
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'],
-      sourceType: [type],
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          // tempFilePath可以作为img标签的src属性显示图片
-          img: res.tempFilePaths[0],
-        })
-
-        var authsession = wx.getStorageSync('authsession')
-        
-        wx.uploadFile({
-          url: 'https://dingyinglai.site/wxapp/fileupload', //仅为示例，非真实的接口地址
-          filePath: res.tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'authsession': authsession
-          },
-          success(res) {
-            const data = res.data
-            //do something
-          }
-        })
-
-
-
-
-      }
-    })
-  },
-
-  chooseimage: function () {
-    var that = this;
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
-      itemColor: "#a3a2a2",
-      success: function (res) {
-
-        if (!res.cancel) {
-          if (res.tapIndex == 0) {
-            that.chooseWxImage('album')
-          } else if (res.tapIndex == 1) {
-            that.chooseWxImage('camera')
-          }
-        }
-      }
-    })
-
-  },
-
-
-
 
   formSubmit: function (e) {
     var mythis = this
-    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata=', mythis.data.itemsdata)
+    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata=', mythis.data.itemsdata_1)
     console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata_2=', mythis.data.itemsdata_2)
+    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata_3=', mythis.data.itemsdata_3)
     wx.showModal({
       title: '提示',
       content: '再确认是否提交',
@@ -233,13 +179,14 @@ Page({
           wx.showLoading({
             title: '提交中',
           })
-
+          //submit case 1/2/3
           wx.request({
             url: 'https://dingyinglai.site/wxapp/patientcasemesgsubmit',
             method: "POST",
             data: {
-              "itemsdata": mythis.data.itemsdata,
+              "itemsdata_1": mythis.data.itemsdata_1,
               "itemsdata_2": mythis.data.itemsdata_2,
+              "itemsdata_3": mythis.data.itemsdata_3,
               "authsession": app.globalData.authsession,
             },
             header: {
@@ -250,7 +197,7 @@ Page({
              
               wx.hideLoading()
               wx.navigateTo({
-                url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
+               // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
                 success: function (res) {
                   // 通过eventChannel向被打开页面传送数据
                   console.log('[liro-debug]: navigate to patientcase feedback page')
@@ -260,6 +207,34 @@ Page({
             }
           })
 
+          //upload case img 
+          console.log("[liro-debug] 1>" + mythis.data.caseimagesList.length)
+          for(var i = 0; i < mythis.data.caseimagesList.length; i ++)
+          {
+              var imgurl = mythis.data.caseimagesList[i]
+              console.log(imgurl)
+              wx.uploadFile({
+                url: 'https://dingyinglai.site/wxapp/fileupload',
+                filePath: imgurl,
+                name: 'file',
+                header: {
+                    "Content-Type": "multipart/form-data",
+                    'Content-Type': 'application/json'
+                },
+                formData: {
+                  'authsession': app.globalData.authsession,
+                  "uploadid"  : 3,
+                  "casepicid" : i,
+                },
+                success:function(data){
+                    console.log(data);
+                },
+                fail:function(data){
+                    console.log(data);
+                }
+            }) 
+
+          }
 
 
         } else {//这里是点击了取消以后
@@ -270,11 +245,8 @@ Page({
 
   },
 
-
-
   // 图片上传
-
-  uploader:function(){
+selectcaseimg:function(){
 
       var that=this;
 //      let imagesList=[]; 
@@ -324,17 +296,23 @@ Page({
              
             if (flag == true && res.tempFiles.length <= maxLength){
                 that.setData({
-                        imagesList: res.tempFilePaths                         
+                        caseimagesList: res.tempFilePaths                         
                 })
-
             }
+            
+/*
+            var authsession = wx.getStorageSync('authsession')
             wx.uploadFile({
-                url: 'https://shop.gxyourui.cn',
+                url: 'https://dingyinglai.site/wxapp/fileupload',
                 filePath: res.tempFilePaths[0],
-                name: 'images',
+                name: 'file',
                 header: {
                     "Content-Type": "multipart/form-data",
                     'Content-Type': 'application/json'
+                },
+                formData: {
+                  'authsession': authsession,
+                  "uploadid"  : 3,
                 },
                 success:function(data){
                     console.log(data);
@@ -343,6 +321,8 @@ Page({
                     console.log(data);
                 }
             }) 
+
+            */
             console.log(res);
   
             },
@@ -369,6 +349,64 @@ Page({
 
 
 },
+
+
+chooseWxImage: function (type) {
+  var that = this;
+  wx.chooseImage({
+    sizeType: ['original', 'compressed'],
+    sourceType: [type],
+    success: function (res) {
+      console.log(res);
+      that.setData({
+        // tempFilePath可以作为img标签的src属性显示图片
+        img: res.tempFilePaths[0],
+      })
+
+      var authsession = wx.getStorageSync('authsession')
+      
+      wx.uploadFile({
+        url: 'https://dingyinglai.site/wxapp/fileupload', //仅为示例，非真实的接口地址
+        filePath: res.tempFilePaths[0],
+        name: 'file',
+        formData: {
+          'authsession': authsession
+        },
+        success(res) {
+          const data = res.data
+          //do something
+        }
+      })
+
+
+
+
+    }
+  })
+},
+
+chooseimage: function () {
+  var that = this;
+  wx.showActionSheet({
+    itemList: ['从相册中选择', '拍照'],
+    itemColor: "#a3a2a2",
+    success: function (res) {
+
+      if (!res.cancel) {
+        if (res.tapIndex == 0) {
+          that.chooseWxImage('album')
+        } else if (res.tapIndex == 1) {
+          that.chooseWxImage('camera')
+        }
+      }
+    }
+  })
+},
+
+
+
+
+
 
 
   formReset: function () {

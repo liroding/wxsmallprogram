@@ -1,10 +1,10 @@
 {
   "pages": [
 
+ 
+    "pages/login/login",
     "pages/patientcase/patientcase",
 
-    "pages/testpage/test",
-    "pages/login/login",
     "pages/idmessage/idmessage",
 
     "pages/index/index",
@@ -18,7 +18,8 @@
     "pages/feedbackpage/patientcase/patientcase",
     "pages/feedbackpage/feedback/feedback",
 
-    "pages/Preview/Preview"
+    "pages/Preview/Preview",
+    "pages/testpage/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
