@@ -11,7 +11,7 @@
 
 <view > 
       <view class="section">
-        <view class="section__title">1. 是否出现以下情况</view>
+        <view class="section__title">1. 是否出现以下症状</view>
         <view class="weui-cell weui-cell_input">
         <checkbox-group bindchange="checkboxChange_1">
             <label class="checkbox" wx:for="{{items}}">
@@ -23,17 +23,101 @@
       </view>
 
       <view class="section">
-        <view class="section__title">2. 是否检查过</view>
+        <view class="section__title">2. 病程选择</view>
         <view class="weui-cell weui-cell_input">
-            <checkbox-group bindchange="checkboxChange_2">
-                <label class="checkbox" wx:for="{{items_2}}">
-                  <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-                <view></view>
-                </label>
-            </checkbox-group>
+          <view class="section section_gap">
+          <radio-group class="group" bindchange="checkboxChange_2">
+              <view class="label-2" wx:for="{{radioItems}}">
+                <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
+                <view class="label-2__icon">
+                  <view class="label-2__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
+                </view>
+                <label class="label-2__text" for="{{item.name}}"><text>{{item.value}}</text></label>
+              </view>
+          </radio-group>
+        </view>
         </view>
       </view>
 
+      <view class="section">
+        <view class="section__title">3. 检查材料提交</view>
+        <view class="weui-cell weui-cell_input">
+          <checkbox-group bindchange="checkboxChange_3">
+            <label class="checkbox" wx:for="{{uploadpicitems}}">
+                <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                        <view wx:if="{{item.name == '3-10'}}">
+                              <input class="weui-input" placeholder-style="color:#F76260" name="other"  placeholder="选填说明"/>
+                        </view>      
+                        <view wx:elif="{{item.name == '3-11'}}">
+                              <input class="weui-input" placeholder-style="color:#F76260" name="other"  placeholder="选填说明"/>
+                        </view>        
+                <view></view>
+            </label>
+          </checkbox-group>
+        </view>
+
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd weui-cell">
+              <view class="weui-uploader__title"></view>
+          </view>
+          <view class="weui-uploader__bd weui-cell block">
+              <block wx:for="{{imagesList}}"  >
+              
+              <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{item}}" data-index="{{index}}" bindtap=
+                   "previewImage">
+                  </image>
+              </view>
+
+              </block>
+
+              <view class="weui-uploader__input-box">
+                  <input class="weui-uploader__input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader' name="images"></input>                 
+              </view>
+          </view>
+        </view>
+      </view> 
+
+
+<!--
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">X线---正位</view>
+          </view>
+          <view class="weui-uploader__bd">
+              <block wx:for="{{imagesList}}" wx:key="*this" >
+              <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{item}}"></image>
+              </view>
+              </block>
+              <view class="weui-uploader__input-box">
+                  <input class="weui-uploader__input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader' name="images"></input>                 
+              </view>
+          </view>
+
+          <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">X线---侧位</view>
+          </view>
+          <view class="weui-uploader__bd">
+              <block wx:for="{{imagesList}}" wx:key="*this" >
+              <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{item}}"></image>
+              </view>
+              </block>
+              <view class="weui-uploader__input-box">
+                  <input class="weui-uploader__input js_file" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple="" bindtap='uploader' name="images"></input>
+              </view>
+          </view>
+        </view>
+
+-->
+
+
+
+
+
+
+<!--
       <view class="section">
         <view class="section__title">3. 选择</view>
         <view class="weui-cell weui-cell_input">
@@ -55,7 +139,7 @@
                   </picker>
         </view>
       </view>
-
+-->
       <view class="section">
         <view class="section__title">5. 其他：</view>
         <view class="weui-cell weui-cell_input">
@@ -88,6 +172,7 @@
       </view>
 
 </form>
+
 
 
 

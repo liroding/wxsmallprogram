@@ -8,20 +8,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    itemsdata:{},
+    itemsdata_1: {},
     itemsdata_2: {},
+    itemsdata_3: {},
+    imagesList : [],
+
     //1
     items: [
-      { name: '1—1', value: '是否抽烟' },
-      { name: '1-2', value: '是否喝酒'},
-      { name: '1-3', value: '是否头疼' },
-      { name: '1-4', value: '其他' },   // checked: 'true'
+      { name: '1—1', value: '颈部疼痛' },
+      { name: '1-2', value: '枕部疼痛'},
+      { name: '1-3', value: '肩痛' },
+      { name: '1-4', value: '上肢疼痛' },   // checked: 'true'
     ],
     //2
-    items_2: [
-      { name: '2-1', value: '检出过' },
-      { name: '2-2', value: '未检查过' },  //checked: 'true'
+    radioItems: [
+      { name: '2-1', value: '早期   <2周' },
+      { name: '2-2', value: '急性   <2周' },
+      { name: '2-3', value: '亚急性 6-12周' },
+      { name: '2-4', value: '慢性   >12周' },
+      { name: '2-5', value: '暂无', checked: 'true' },
     ],
+    uploadpicitems: [
+      { name: '3—1', value: 'X线 -- 正位' },
+      { name: '3-2', value: 'X线 -- 侧位'},
+      { name: '3-3', value: 'X线 -- 后前斜位' },
+      { name: '3-4', value: 'X线 -- 前后斜位' },   // checked: 'true'
+      { name: '3—5', value: 'X线 -- 张口位' },
+      { name: '3-6', value: 'X线 -- 过伸位'},
+      { name: '3-7', value: 'X线 -- 过屈位' },
+      { name: '3-8', value: 'MRI' }, 
+      { name: '3-9', value: 'CT' },   
+      { name: '3-10', value: '颈部血管超声' }, 
+      { name: '3-11', value: '肌电图' },   
+    ],
+    
+
+
+    /*
     //3
     array: ['美国', '中国', '巴西', '日本'],
     objectArray: [
@@ -89,7 +112,7 @@ Page({
       ]
     ],
     multiIndex: [0, 0, 0],
-
+*/
     img: '/resources/index_bakcup/1.png'
   },
 
@@ -97,17 +120,34 @@ Page({
     var mythis = this 
     console.log('checkboxChange_1发送选择改变，携带值为', e.detail.value)
     this.setData({
-      itemsdata: e.detail.value
+      itemsdata_1: e.detail.value
     })
   },
-
   checkboxChange_2: function (e) {
-    console.log('checkboxChange_2发送选择改变，携带值为', e.detail.value)
+    var checked = e.detail.value
+    console.log('radioChange 发送选择改变，携带值为', e.detail.value)
+    var changed = {}
+    for (var i = 0; i < this.data.radioItems.length; i++) {
+      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
+        changed['radioItems[' + i + '].checked'] = true
+      } else {
+        changed['radioItems[' + i + '].checked'] = false
+      }
+    }
+    this.setData(changed)
     this.setData({
       itemsdata_2: e.detail.value
     })
   },
 
+  checkboxChange_3: function (e) {
+    var mythis = this 
+    console.log('checkboxChange_1发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      itemsdata_3: e.detail.value
+    })
+  },
+/*
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -121,6 +161,7 @@ Page({
       multiIndex: e.detail.value
     })
   },
+  */
 
   chooseWxImage: function (type) {
     var that = this;
@@ -175,6 +216,9 @@ Page({
 
   },
 
+
+
+
   formSubmit: function (e) {
     var mythis = this
     console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata=', mythis.data.itemsdata)
@@ -225,6 +269,108 @@ Page({
     })
 
   },
+
+
+
+  // 图片上传
+
+  uploader:function(){
+
+      var that=this;
+//      let imagesList=[]; 
+      let maxSize=1024*1024;
+      let maxLength=11; 
+      let flag=true;
+      wx.chooseImage({
+            count: 11, //最多可以选择的图片总数
+            sizeType: ['original','compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            success: function(res) { 
+            wx.showToast({
+                    title: '正在上传...',
+                    icon: 'loading',
+                    mask: true,  
+                    duration: 500
+            })
+            for(let i=0;i<res.tempFiles.length;i++){
+                  if(res.tempFiles[i].size>maxSize){  //Size < 1M
+                        flag=false;
+                        console.log(111) 
+                        wx.showModal({ 
+                              content: '图片太大，不允许上传',
+                              showCancel: false, 
+                              success: function (res) {
+                                      if (res.confirm) {
+                                          console.log('用户点击确定')
+                                      }
+                              }
+                        });
+                  }
+            }
+
+            
+            if (res.tempFiles.length>maxLength){
+                console.log('222'); 
+                wx.showModal({
+                    content: '最多能上传'+maxLength+'张图片', 
+                    showCancel:false,
+                    success:function(res){ 
+                    if(res.confirm){ 
+                          console.log('确定');
+                    }
+                    }
+                })
+              }
+             
+            if (flag == true && res.tempFiles.length <= maxLength){
+                that.setData({
+                        imagesList: res.tempFilePaths                         
+                })
+
+            }
+            wx.uploadFile({
+                url: 'https://shop.gxyourui.cn',
+                filePath: res.tempFilePaths[0],
+                name: 'images',
+                header: {
+                    "Content-Type": "multipart/form-data",
+                    'Content-Type': 'application/json'
+                },
+                success:function(data){
+                    console.log(data);
+                },
+                fail:function(data){
+                    console.log(data);
+                }
+            }) 
+            console.log(res);
+  
+            },
+  
+        fail:function(res){ 
+              console.log(res); 
+        }
+  
+  })
+  
+  },
+
+  //预览图片，放大预览
+  previewImage:function(e) {
+   
+  let index = e.currentTarget.dataset.index;   
+  console.log('[LIRO-DEBUG]:' + index)
+  wx.previewImage({  
+    //当前显示下表   
+    current: this.data.imagesList[index],   
+    //数据源   
+    urls: this.data.imagesList  
+    }) 
+
+
+},
+
+
   formReset: function () {
     console.log('[liro-ding]:form发生了reset事件')
   },
