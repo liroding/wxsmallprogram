@@ -47,6 +47,14 @@ Page({
       { name: '3-11', value: '肌电图' },   
     ],
 
+
+    movies: [
+      { url: 'https://dingyinglai.site/static/uploads/caseimgs/ding-丁/2020-04-05 15:34:38_0.PNG' },
+      { url: 'http://wx1.sinaimg.cn/large/d030806aly1fug91w3gtwj21jk2bc7wh.jpg' },
+
+    ],
+
+
   },
 
   /**

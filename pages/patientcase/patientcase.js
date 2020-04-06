@@ -267,6 +267,7 @@ selectcaseimg:function(){
       let maxSize=1024*1024;
       let maxLength=11; 
       let flag=true;
+      console.log('nihao')
       wx.chooseImage({
             count: 11, //最多可以选择的图片总数
             sizeType: ['original','compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -313,6 +314,7 @@ selectcaseimg:function(){
                         caseimagesList: res.tempFilePaths                         
                 })
             }
+  
 /*
             var authsession = wx.getStorageSync('authsession')
             */
@@ -335,9 +337,9 @@ selectcaseimg:function(){
   console.log('[LIRO-DEBUG]:' + index)
   wx.previewImage({  
     //当前显示下表   
-    current: this.data.imagesList[index],   
+    current: this.data.caseimagesList[index],   
     //数据源   
-    urls: this.data.imagesList  
+    urls: this.data.caseimagesList
     }) 
 
 
