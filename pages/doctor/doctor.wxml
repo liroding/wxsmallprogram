@@ -1,0 +1,94 @@
+<!--pages/doctor/doctor.wxml-->
+<text>pages/doctor/doctor.wxml</text>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__desc">人工诊断 -- 病例本</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">病人信息</view>
+                  
+                    <image  class="weui-grid__icon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">姓名</view>
+                    <view class="weui-form-preview__value">{{name}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">性别</view>
+                    <view class="weui-form-preview__value">{{sex}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">年龄</view>
+                    <view class="weui-form-preview__value">{{age}}</view>
+                </view>
+
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">所属单位/部门</view>
+                    <view class="weui-form-preview__value">{{department}}</view>
+                </view>
+
+            </view>
+
+        </view>
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">病例</view>
+                
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <!-- Case1 -->
+                    <view wx:for="{{case1_data}}">
+                        <view class="weui-form-preview__label">{{item.value}}</view>
+                        <view wx:if = "{{case1[index] == 1}}"> 
+                            <view class="weui-form-preview__value">是</view>
+                        </view>
+                        <view wx:else>
+                            <view class="weui-form-preview__value">否</view>
+                        </view>                       
+                    </view>
+                    <!-- 分割线 -->
+                    <view class="divLine"></view>
+                    <!-- Case2 -->
+                    <view wx:for="{{case2_data}}">
+                        <view class="weui-form-preview__label">{{item.value}}</view>
+                        <view wx:if = "{{case2[index] == 1}}"> 
+                            <view class="weui-form-preview__value">是</view>
+                        </view>
+                        <view wx:else>
+                            <view class="weui-form-preview__value">否</view>
+                        </view>                       
+                    </view>
+
+                    <!-- 分割线 -->
+                    <view class="divLine"></view>
+                    <!-- Case3 -->
+                    <view wx:for="{{case3_data}}">
+                        <view class="weui-form-preview__label">{{item.value}}</view>
+                        <view wx:if = "{{case3[index] == 1}}"> 
+                            <view class="weui-form-preview__value">是</view>
+                        </view>
+                        <view wx:else>
+                            <view class="weui-form-preview__value">否</view>
+                        </view>                       
+                    </view>
+
+  
+                    <view></view>
+          
+                </view>
+
+            </view>
+            <view class="weui-form-preview__ft">
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">辅助操作</navigator>
+                <navigator url="../patientcase/patientcase" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
+            </view>
+        </view>
+    </view>
+</view>

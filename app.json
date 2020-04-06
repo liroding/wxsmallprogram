@@ -1,9 +1,12 @@
 {
   "pages": [
 
- 
+   
     "pages/login/login",
+
+    "pages/doctor/doctor",
     "pages/patientcase/patientcase",
+   
 
     "pages/idmessage/idmessage",
 

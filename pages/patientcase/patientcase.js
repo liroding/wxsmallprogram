@@ -15,10 +15,11 @@ Page({
 
     //1
     items: [
-      { name: '1—1', value: '颈部疼痛' },
+      { name: '1-1', value: '颈部疼痛' },
       { name: '1-2', value: '枕部疼痛'},
       { name: '1-3', value: '肩痛' },
-      { name: '1-4', value: '上肢疼痛' },   // checked: 'true'
+      { name: '1-4', value: '上肢疼痛' },  
+     // { name: '1-5', value: '暂无',checked: 'true'},   // checked: 'true'
     ],
     //2
     radioItems: [
@@ -26,14 +27,14 @@ Page({
       { name: '2-2', value: '急性   <2周' },
       { name: '2-3', value: '亚急性 6-12周' },
       { name: '2-4', value: '慢性   >12周' },
-      { name: '2-5', value: '暂无', checked: 'true' },
+  //    { name: '2-5', value: '暂无', checked: 'true' },
     ],
     uploadpicitems: [
-      { name: '3—1', value: 'X线 -- 正位' },
+      { name: '3-1', value: 'X线 -- 正位' },
       { name: '3-2', value: 'X线 -- 侧位'},
       { name: '3-3', value: 'X线 -- 后前斜位' },
       { name: '3-4', value: 'X线 -- 前后斜位' },   // checked: 'true'
-      { name: '3—5', value: 'X线 -- 张口位' },
+      { name: '3-5', value: 'X线 -- 张口位' },
       { name: '3-6', value: 'X线 -- 过伸位'},
       { name: '3-7', value: 'X线 -- 过屈位' },
       { name: '3-8', value: 'MRI' }, 
@@ -183,6 +184,7 @@ Page({
           wx.request({
             url: 'https://dingyinglai.site/wxapp/patientcasemesgsubmit',
             method: "POST",
+
             data: {
               "itemsdata_1": mythis.data.itemsdata_1,
               "itemsdata_2": mythis.data.itemsdata_2,
@@ -196,6 +198,7 @@ Page({
               console.log(res.data)
              
               wx.hideLoading()
+  /*            
               wx.navigateTo({
                // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
                 success: function (res) {
@@ -203,38 +206,49 @@ Page({
                   console.log('[liro-debug]: navigate to patientcase feedback page')
                 }
               })
-
+*/
             }
           })
 
           //upload case img 
           console.log("[liro-debug] 1>" + mythis.data.caseimagesList.length)
-          for(var i = 0; i < mythis.data.caseimagesList.length; i ++)
-          {
-              var imgurl = mythis.data.caseimagesList[i]
-              console.log(imgurl)
-              wx.uploadFile({
-                url: 'https://dingyinglai.site/wxapp/fileupload',
-                filePath: imgurl,
-                name: 'file',
-                header: {
-                    "Content-Type": "multipart/form-data",
-                    'Content-Type': 'application/json'
-                },
-                formData: {
-                  'authsession': app.globalData.authsession,
-                  "uploadid"  : 3,
-                  "casepicid" : i,
-                },
-                success:function(data){
-                    console.log(data);
-                },
-                fail:function(data){
-                    console.log(data);
-                }
-            }) 
-
+          if(mythis.data.caseimagesList.length > 0){
+            for(var i = 0; i < mythis.data.caseimagesList.length; i ++)
+            {
+                var imgurl = mythis.data.caseimagesList[i]
+                console.log(imgurl)
+                wx.uploadFile({
+                  url: 'https://dingyinglai.site/wxapp/fileupload',
+                  filePath: imgurl,
+                  name: 'file',
+                  header: {
+                      "Content-Type": "multipart/form-data",
+                      'Content-Type': 'application/json'
+                  },
+                  formData: {
+                    'authsession': app.globalData.authsession,
+                    "uploadid"  : 3,
+                    "casepicid" : i,
+                  },
+                  success:function(data){
+                      console.log(data);
+                      wx.hideLoading()
+                      wx.navigateTo({
+                       // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
+                        success: function (res) {
+                          // 通过eventChannel向被打开页面传送数据
+                          console.log('[liro-debug]: navigate to patientcase feedback page')
+                        }
+                      })
+                  },
+                  fail:function(data){
+                      console.log(data);
+                  }
+              }) 
+  
+            }
           }
+
 
 
         } else {//这里是点击了取消以后
@@ -299,31 +313,10 @@ selectcaseimg:function(){
                         caseimagesList: res.tempFilePaths                         
                 })
             }
-            
 /*
             var authsession = wx.getStorageSync('authsession')
-            wx.uploadFile({
-                url: 'https://dingyinglai.site/wxapp/fileupload',
-                filePath: res.tempFilePaths[0],
-                name: 'file',
-                header: {
-                    "Content-Type": "multipart/form-data",
-                    'Content-Type': 'application/json'
-                },
-                formData: {
-                  'authsession': authsession,
-                  "uploadid"  : 3,
-                },
-                success:function(data){
-                    console.log(data);
-                },
-                fail:function(data){
-                    console.log(data);
-                }
-            }) 
-
             */
-            console.log(res);
+            console.log("[LIRO-DEBUG]" + res);
   
             },
   

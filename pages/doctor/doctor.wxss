@@ -1,0 +1,11 @@
+/* pages/doctor/doctor.wxss */
+@import '/lib/weui.wxss'
+.weui-form-preview{
+    margin-bottom: 25px;
+}
+
+.divLine{
+  background: #E0E3DA;
+  width: 100%;
+  height: 5rpx;
+} 
