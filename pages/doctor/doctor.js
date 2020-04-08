@@ -18,6 +18,7 @@ Page({
     case1:null,
     case2:null,
     case3:null,
+    caseimglist:null,
 
     case1_data: [
       { name: '1-1', value: '颈部疼痛' },
@@ -47,13 +48,13 @@ Page({
       { name: '3-11', value: '肌电图' },   
     ],
 
-
+/*
     movies: [
       { url: 'https://dingyinglai.site/static/uploads/caseimgs/ding-丁/2020-04-05 15:34:38_0.PNG' },
       { url: 'http://wx1.sinaimg.cn/large/d030806aly1fug91w3gtwj21jk2bc7wh.jpg' },
 
     ],
-
+*/
 
   },
 
@@ -62,54 +63,7 @@ Page({
    */
   onLoad: function (options) {
 
-    var mythis = this
-    console.log('previed onload')
-    this.setData({
-       userInfo: app.globalData.userInfo,
-       authsession: app.globalData.authsession
-    })
-
-    wx.showLoading({
-      title: '获取数据中',
-    })
-
-    //请求数据库，获取所有提交的信息
-    wx.request({
-      url: 'https://dingyinglai.site/wxapp/querymysqldb',
-       method: "POST",
-       data: {
-          "reqid": 5,    //get all submit information  id = 5
-          "authsession": app.globalData.authsession,
-       },
-       header: {
-         'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
-       },
-       success: function (res) {
-           console.log(res.data)
-           wx.hideLoading()
-           mythis.setData({
-               name: res.data.name,
-               sex: res.data.sex,
-               age: res.data.age,
-               department: res.data.department,
-               telephone: res.data.telephone,
-
-               case1: res.data.case1,
-               case2: res.data.case2,
-               case3: res.data.case3,
-
-        })
-      /*
-      wx.navigateTo({
-        url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
-        success: function (res) {
-          // 通过eventChannel向被打开页面传送数据
-          console.log('navigate to feedback page')
-        }
-      })
-      */
-    }
-  })
+ 
 
   },
 
@@ -159,6 +113,7 @@ Page({
                case1: res.data.case1,
                case2: res.data.case2,
                case3: res.data.case3,
+               caseimglist: res.data.caseimglist,
 
         })
       /*

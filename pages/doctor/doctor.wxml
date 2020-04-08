@@ -35,6 +35,7 @@
             </view>
 
         </view>
+        <!-------------------------------------------------------------------->
         <view class="weui-form-preview">
             <view class="weui-form-preview__hd">
                 <view class="weui-form-preview__label">病例</view>
@@ -51,8 +52,10 @@
                             <view class="weui-form-preview__value">否</view>
                         </view>                       
                     </view>
-                    <!-- 分割线 -->
-                    <view class="divLine"></view>
+                    
+    
+                    <!-- 分割线 -->  
+                    <view class="divLine"></view> 
                     <!-- Case2 -->
 
                     <view wx:for="{{case2_data}}">
@@ -77,29 +80,36 @@
                             <view class="weui-form-preview__value">否</view>
                         </view>                       
                     </view>
-
-                    <!-- 分割线 -->
-                    <view class="divLine"></view>
-                    <!-- 病例图 -->
-                    <view>
-                    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="2500" duration="1000">  
-                    <block wx:for="{{movies}}" wx:for-index="index">  
-                        <swiper-item>  
-                            <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
-                        </swiper-item>  
-                    </block>  
-                    </swiper> 
-                    </view>
-
-                    <view></view>
-          
+        
                 </view>
 
-            </view>
+            </view>    
             <view class="weui-form-preview__ft">
                 <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">辅助操作</navigator>
                 <navigator url="../patientcase/patientcase" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
             </view>
         </view>
+        <!------------------------------------------------------------------------------------------>
+        <!-- 分割线 -->
+        <view class="divLine"></view>
+        <!-- 病例图 -->
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">病例图</view>
+            </view>        
+            <swiper class="swiper" indicator-dots="true" autoplay="true" interval="2500" duration="1000">  
+                <block wx:for="{{caseimglist}}" wx:for-index="index">  
+                        <swiper-item>  
+                            <image src="{{item}}" class="slide-image" mode="aspectFill"/>  
+                        </swiper-item>  
+                </block>  
+            </swiper> 
+            
+        </view>
+
+
+        <!------------------------------------------------------------------------------------------>       
+
+        
     </view>
 </view>
