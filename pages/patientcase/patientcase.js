@@ -341,8 +341,6 @@ selectcaseimg:function(){
     //数据源   
     urls: this.data.caseimagesList
     }) 
-
-
 },
 
 

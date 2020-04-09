@@ -58,6 +58,73 @@ Page({
 
   },
 
+
+    //预览图片，放大预览
+    previewImage:function(e) {
+   
+      let index = e.currentTarget.dataset.index;   
+      console.log('[LIRO-DEBUG]:' + index)
+      wx.previewImage({  
+        //当前显示下表   
+        current: this.data.caseimglist[index],   
+        //数据源   
+        urls: this.data.caseimglist
+        }) 
+    },
+
+    doctor_preview: function (e) {
+      var mythis = this
+      console.log('previed onload')
+      this.setData({
+         userInfo: app.globalData.userInfo,
+         authsession: app.globalData.authsession
+      })
+  
+      wx.showLoading({
+        title: '获取数据中',
+      })
+  
+      //请求数据库，获取所有提交的信息
+      wx.request({
+        url: 'https://dingyinglai.site/wxapp/querymysqldb',
+         method: "POST",
+         data: {
+            "reqid": 5,    //get all submit information  id = 5
+            "authsession": app.globalData.authsession,
+         },
+         header: {
+           'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
+         },
+         success: function (res) {
+             console.log(res.data)
+             wx.hideLoading()
+             mythis.setData({
+                 name: res.data.name,
+                 sex: res.data.sex,
+                 age: res.data.age,
+                 department: res.data.department,
+                 telephone: res.data.telephone,
+  
+                 case1: res.data.case1,
+                 case2: res.data.case2,
+                 case3: res.data.case3,
+                 caseimglist: res.data.caseimglist,
+  
+          })
+        /*
+        wx.navigateTo({
+          url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
+          success: function (res) {
+            // 通过eventChannel向被打开页面传送数据
+            console.log('navigate to feedback page')
+          }
+        })
+        */
+      }
+      
+    })
+    },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -78,55 +145,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var mythis = this
-    console.log('previed onload')
-    this.setData({
-       userInfo: app.globalData.userInfo,
-       authsession: app.globalData.authsession
-    })
+    
 
-    wx.showLoading({
-      title: '获取数据中',
-    })
 
-    //请求数据库，获取所有提交的信息
-    wx.request({
-      url: 'https://dingyinglai.site/wxapp/querymysqldb',
-       method: "POST",
-       data: {
-          "reqid": 5,    //get all submit information  id = 5
-          "authsession": app.globalData.authsession,
-       },
-       header: {
-         'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
-       },
-       success: function (res) {
-           console.log(res.data)
-           wx.hideLoading()
-           mythis.setData({
-               name: res.data.name,
-               sex: res.data.sex,
-               age: res.data.age,
-               department: res.data.department,
-               telephone: res.data.telephone,
-
-               case1: res.data.case1,
-               case2: res.data.case2,
-               case3: res.data.case3,
-               caseimglist: res.data.caseimglist,
-
-        })
-      /*
-      wx.navigateTo({
-        url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
-        success: function (res) {
-          // 通过eventChannel向被打开页面传送数据
-          console.log('navigate to feedback page')
-        }
-      })
-      */
-    }
-  })
+  
   },
 
   /**
