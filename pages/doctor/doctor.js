@@ -71,8 +71,17 @@ Page({
     },
 
     doctor_preview: function (e) {
+      console.log(e.currentTarget.id)
       var mythis = this
       console.log('previed onload')
+      //clear data
+      mythis.data.name = null
+    
+      mythis.data.sex = null
+
+      mythis.data.caseimglist = null
+
+
       this.setData({
          userInfo: app.globalData.userInfo,
          authsession: app.globalData.authsession
@@ -81,7 +90,15 @@ Page({
       wx.showLoading({
         title: '获取数据中',
       })
-  
+      
+      if (e.currentTarget.id == 'serch'){
+        console.log('serch')
+        reqid = 5
+      }else if(e.currentTarget.id == 'next'){
+        console.log('next')
+        reqid = 5
+      }
+       
       //请求数据库，获取所有提交的信息
       wx.request({
         url: 'https://dingyinglai.site/wxapp/querymysqldb',
@@ -123,6 +140,7 @@ Page({
     })
     },
 
+    
   /**
    * 生命周期函数--监听页面加载
    */

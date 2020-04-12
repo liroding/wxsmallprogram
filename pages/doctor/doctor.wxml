@@ -14,11 +14,11 @@
             </view>
             <view class="weui-form-preview__ft">
                 
-                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='doctor_preview'>查看病例</navigator>
+                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='doctor_preview' id ='serch'>查看病例</navigator>
 
                 <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="showDialogBtn">录入诊断结果</navigator>
 
-                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">下一个</navigator>
+                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='doctor_preview' id = 'next'>下一个</navigator>
             </view>
          </view> 
 

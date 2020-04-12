@@ -14,6 +14,7 @@ Page({
     caseimagesList : [],
     syncflag_items :null,   //sync itemsdata info and caseimages,for navigate to patientcase feedback page
     syncflag_caseimg :null,
+    retserverinfo:'',
 
     //1
     items: [
@@ -201,11 +202,11 @@ Page({
 
             success: function (res) {
               console.log(res.data) 
-              
-              
+              retserverinfo = res.data                  
               mythis.data.syncflag_items = 1
               console.log('nihoa')
               return resolve(mythis.data.syncflag_items)
+              
   /*           
               wx.hideLoading() 
               wx.navigateTo({
@@ -265,15 +266,27 @@ Page({
             }
           }else{
             mythis.data.syncflag_caseimg = 1
+            return resolve(mythis.data.syncflag_caseimg)
           }
         });
 
         Promise.all([
           promise1, promise2
         ]).then(res => {
+
           console.log(mythis.data.syncflag_items)
           console.log(mythis.data.syncflag_caseimg)
+          console.log(res)
           wx.hideLoading()
+
+          wx.navigateTo({
+             url: '../feedbackpage/patientcase/patientcase?info=' + retserverinfo,
+             success: function (res) {
+               // 通过eventChannel向被打开页面传送数据
+               console.log('[liro-debug]: navigate to patientcase feedback page')
+             }
+           })
+
         })
     
   
@@ -349,8 +362,7 @@ selectcaseimg:function(){
                         });
                   }
             }
-
-            
+           
             if (res.tempFiles.length>maxLength){
                 console.log('222'); 
                 wx.showModal({
