@@ -182,7 +182,10 @@ Page({
           wx.showLoading({
             title: '提交中',
           })
-          //submit case 1/2/3
+
+   /////////////////////////////////////////////////////////////////////////       
+         let promise1 = new Promise(function (resolve, reject) {
+                          //submit case 1/2/3
           wx.request({
             url: 'https://dingyinglai.site/wxapp/patientcasemesgsubmit',
             method: "POST",
@@ -199,8 +202,10 @@ Page({
             success: function (res) {
               console.log(res.data) 
               
+              
               mythis.data.syncflag_items = 1
               console.log('nihoa')
+              return resolve(mythis.data.syncflag_items)
   /*           
               wx.hideLoading() 
               wx.navigateTo({
@@ -213,7 +218,10 @@ Page({
 */
             }
           })
+        });
 
+
+        let promise2 = new Promise(function (resolve, reject) {
           //upload case img 
           console.log("[liro-debug] 1>" + mythis.data.caseimagesList.length)
           if(mythis.data.caseimagesList.length > 0){
@@ -237,6 +245,7 @@ Page({
                   success:function(data){
                       console.log(data);
                       mythis.data.syncflag_caseimg = 1
+                      return resolve(mythis.data.syncflag_caseimg)
                       /*
                       wx.hideLoading()
                       wx.navigateTo({
@@ -257,6 +266,25 @@ Page({
           }else{
             mythis.data.syncflag_caseimg = 1
           }
+        });
+
+        Promise.all([
+          promise1, promise2
+        ]).then(res => {
+          console.log(mythis.data.syncflag_items)
+          console.log(mythis.data.syncflag_caseimg)
+          wx.hideLoading()
+        })
+    
+  
+
+
+
+
+
+   //////////////////////////////////////////////////////////////////////////
+
+/*
           console.log(mythis.data.syncflag_items)
           console.log(mythis.data.syncflag_caseimg)
           //判断提交状态flag去反馈信息
@@ -276,7 +304,7 @@ Page({
 
           }        
 
-
+*/
 
         } else {//这里是点击了取消以后
           console.log('[liro-debug]:不提交')
