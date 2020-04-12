@@ -1,9 +1,8 @@
 {
   "pages": [
-
     
+   
     "pages/login/login",
-
     "pages/doctor/doctor",
     "pages/patientcase/patientcase",
    
@@ -14,6 +13,8 @@
 
     "pages/introducearticle/introducearticle",
   
+    "pages/testpage/test",
+
     "pages/download/download",
     
     "pages/logs/logs",
@@ -21,8 +22,8 @@
     "pages/feedbackpage/patientcase/patientcase",
     "pages/feedbackpage/feedback/feedback",
 
-    "pages/Preview/Preview",
-    "pages/testpage/test"
+    "pages/Preview/Preview"
+  
   ],
   "window": {
     "backgroundTextStyle": "light",

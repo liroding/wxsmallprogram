@@ -12,6 +12,8 @@ Page({
     itemsdata_2: {},
     itemsdata_3: {},
     caseimagesList : [],
+    syncflag_items :null,   //sync itemsdata info and caseimages,for navigate to patientcase feedback page
+    syncflag_caseimg :null,
 
     //1
     items: [
@@ -184,7 +186,6 @@ Page({
           wx.request({
             url: 'https://dingyinglai.site/wxapp/patientcasemesgsubmit',
             method: "POST",
-
             data: {
               "itemsdata_1": mythis.data.itemsdata_1,
               "itemsdata_2": mythis.data.itemsdata_2,
@@ -194,11 +195,14 @@ Page({
             header: {
               'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
             },
+
             success: function (res) {
-              console.log(res.data)
-             
-              wx.hideLoading()
-  /*            
+              console.log(res.data) 
+              
+              mythis.data.syncflag_items = 1
+              console.log('nihoa')
+  /*           
+              wx.hideLoading() 
               wx.navigateTo({
                // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
                 success: function (res) {
@@ -232,6 +236,8 @@ Page({
                   },
                   success:function(data){
                       console.log(data);
+                      mythis.data.syncflag_caseimg = 1
+                      /*
                       wx.hideLoading()
                       wx.navigateTo({
                        // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
@@ -240,6 +246,7 @@ Page({
                           console.log('[liro-debug]: navigate to patientcase feedback page')
                         }
                       })
+                      */
                   },
                   fail:function(data){
                       console.log(data);
@@ -247,7 +254,27 @@ Page({
               }) 
   
             }
+          }else{
+            mythis.data.syncflag_caseimg = 1
           }
+          console.log(mythis.data.syncflag_items)
+          console.log(mythis.data.syncflag_caseimg)
+          //判断提交状态flag去反馈信息
+          while ((mythis.data.syncflag_items !=1) && (mythis.data.syncflag_caseimg != 1)) 
+          {
+            console.log('enter')
+            wx.hideLoading()
+            wx.navigateTo({
+            // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
+            success: function (res) {
+                // 通过eventChannel向被打开页面传送数据
+                console.log('[liro-debug]: navigate to patientcase feedback page')
+            }
+            })
+            mythis.data.syncflag_items = 0
+            mythis.data.syncflag_caseimg = 0
+
+          }        
 
 
 

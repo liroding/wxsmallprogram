@@ -16,9 +16,9 @@
                 
                 <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='doctor_preview'>查看病例</navigator>
 
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">录入诊断结果</navigator>
+                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="showDialogBtn">录入诊断结果</navigator>
 
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">下一个</navigator>
+                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">下一个</navigator>
             </view>
          </view> 
 
@@ -124,6 +124,32 @@
         </view>
 
         <!------------------------------------------------------------------------------------------>       
-  
     </view>
 </view>
+<!------------------------------------------------------------------------------------------>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-title">填写诊断结果</view>
+            <view class="modal-content">
+                <view class="modal-input">
+                    <input placeholder-class="input-holder" type="number" maxlength="20" bindinput="inputChangeResult_1" class="input" placeholder="结果一："></input>
+                </view>
+                <view class="modal-input">
+                    <input placeholder-class="input-holder" type="number" maxlength="20" bindinput="inputChangeResult_2" class="input" placeholder="结果二"></input>
+                </view>
+                <view class="modal-input">
+                    <input placeholder-class="input-holder" type="number" maxlength="20" bindinput="inputChangeResult_3" class="input" placeholder="结果三"></input> 
+                </view>
+                <view class="modal-input">
+                    <input placeholder-class="input-holder" type="number" maxlength="20" bindinput="inputChange_option" class="input" placeholder="选填"></input>
+                </view>
+            </view>
+ 
+            <view class="modal-footer">
+                <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+                <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+            </view>
+ 
+    </view>

@@ -20,6 +20,9 @@ Page({
     case3:null,
     caseimglist:null,
 
+    //弹窗
+    showModal:false,
+
     case1_data: [
       { name: '1-1', value: '颈部疼痛' },
       { name: '1-2', value: '枕部疼痛'},
@@ -47,15 +50,10 @@ Page({
       { name: '3-10', value: '颈部血管超声' }, 
       { name: '3-11', value: '肌电图' },   
     ],
-
-/*
-    movies: [
-      { url: 'https://dingyinglai.site/static/uploads/caseimgs/ding-丁/2020-04-05 15:34:38_0.PNG' },
-      { url: 'http://wx1.sinaimg.cn/large/d030806aly1fug91w3gtwj21jk2bc7wh.jpg' },
-
-    ],
-*/
-
+    Result_1 :'',
+    Result_2 :'',
+    Result_3 :'',
+    Result_4 :'',
   },
 
 
@@ -130,8 +128,6 @@ Page({
    */
   onLoad: function (options) {
 
- 
-
   },
 
   /**
@@ -146,9 +142,6 @@ Page({
    */
   onShow: function () {
     
-
-
-  
   },
 
   /**
@@ -184,5 +177,77 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+/******
+ ****弹窗
+**************/
+ 
+showDialogBtn: function () {
+  this.setData({
+     showModal: true
+  })
+}, 
+  /** 
+  * 弹出框蒙层截断touchmove事件
+  */
+   
+  preventTouchMove: function () {
+  },
+   
+  /**
+  * 隐藏模态对话框
+  */
+   
+  hideModal: function () {
+    this.setData({
+      showModal: false
+    });
+  },
+   
+  /**
+  * 对话框取消按钮点击事件
+  */
+   
+  onCancel: function () { 
+    this.hideModal();
+  },
+   
+  /**
+  * 对话框确认按钮点击事件
+  */
+  onConfirm: function () {
+    wx.showToast({
+      title: '提交成功',
+      icon: 'success',
+      duration: 2000 
+    })
+    this.hideModal();
+    console.log('[liro-debug] :input data =' + this.data.Result_1 + this.data.Result_2 + this.data.Result_3 + this.data.Result_4)
+  },
+  inputChangeResult_1:function(e){
+    //console.log(e.detail.value)
+    this.setData({
+      Result_1:e.detail.value
+    })
+  },
+  inputChangeResult_2:function(e){
+    //console.log(e.detail.value)
+    this.setData({
+      Result_2:e.detail.value
+    })
+  },
+  inputChangeResult_3:function(e){
+    //console.log(e.detail.value)
+    this.setData({
+      Result_3:e.detail.value
+    })
+  },
+  inputChange_option:function(e){
+    //console.log(e.detail.value)
+    this.setData({
+      Result_4:e.detail.value
+    })
+  },
+
 })
