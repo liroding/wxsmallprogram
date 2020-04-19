@@ -23,6 +23,9 @@ Page({
     //弹窗
     showModal:false,
 
+    //check doctor type
+    checkerdoctorid:null,
+
     case1_data: [
       { name: '1-1', value: '颈部疼痛' },
       { name: '1-2', value: '枕部疼痛'},
@@ -201,9 +204,16 @@ Page({
  ****弹窗
 **************/
  
-showDialogBtn: function () {
+showDialogBtn_doctor: function () {
   this.setData({
-     showModal: true
+     showModal: true,
+     checkerdoctorid : 'doctor'
+  })
+}, 
+showDialogBtn_consultants: function () {
+  this.setData({
+     showModal: true,
+     checkerdoctorid : 'consultants'
   })
 }, 
   /** 
@@ -234,13 +244,14 @@ showDialogBtn: function () {
   /**
   * 对话框确认按钮点击事件
   */
-  onConfirm: function () {
+  onConfirm: function (e) {
     wx.showToast({
       title: '提交成功',
       icon: 'success',
       duration: 2000 
     })
     this.hideModal();
+    console.log('[liro-debug]:input doctor id = ' + e.currentTarget.id)
     console.log('[liro-debug] :input data =' + this.data.Result_1 + this.data.Result_2 + this.data.Result_3 + this.data.Result_4)
   },
   inputChangeResult_1:function(e){

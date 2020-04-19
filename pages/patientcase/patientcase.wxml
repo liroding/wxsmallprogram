@@ -77,6 +77,19 @@
       </view> 
 
 
+      <view class="section">
+        <view class="section__title">4. 力学评估</view>
+        <view class="weui-cell weui-cell_input">
+        <checkbox-group bindchange="checkboxChange_1">
+            <label class="checkbox" wx:for="{{MechanicalItems}}">
+                <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                <view></view>
+            </label>
+        </checkbox-group>
+        </view>
+      </view>
+
+
 <!--
         <view class="weui-uploader">
           <view class="weui-uploader__hd">

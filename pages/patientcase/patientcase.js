@@ -46,7 +46,13 @@ Page({
       { name: '3-11', value: '肌电图' },   
     ],
     
+    //4
+    MechanicalItems: [
+      { name: '4-1', value: '麦肯基' },
+      { name: '4-2', value: 'FMS'},
 
+     // { name: '1-5', value: '暂无',checked: 'true'},   // checked: 'true'
+    ],
 
     /*
     //3

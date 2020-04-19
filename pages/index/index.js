@@ -9,7 +9,7 @@ Page({
   data: {
     userInfo: {},
 
-    background: ['/resources/index_bakcup/pic1.jpg', '/resources/index_bakcup/pic2.jpg', '/resources/index_bakcup/pic3.jpg'],
+    background: ['/resources/index_bakcup/headpic_1.jpg', '/resources/index_bakcup/headpic_2.jpg', '/resources/index_bakcup/headpic_3.jpg'],
     indicatorDots: true,
     vertical: false,
     autoplay: true,

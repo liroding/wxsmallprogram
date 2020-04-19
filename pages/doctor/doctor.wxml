@@ -16,7 +16,9 @@
                 
                 <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='doctor_preview' id ='serch'>查看病例</navigator>
 
-                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="showDialogBtn">录入诊断结果</navigator>
+                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="showDialogBtn_doctor">医师诊断</navigator>
+
+                <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="showDialogBtn_consultants">会诊医师诊断</navigator>
 
                 <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='doctor_preview' id = 'next'>下一个</navigator>
             </view>
@@ -149,7 +151,7 @@
  
             <view class="modal-footer">
                 <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-                <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+                <view class="btn-confirm" bindtap="onConfirm" id="{{checkerdoctorid}}" data-status="confirm">确定</view>
             </view>
  
     </view>
