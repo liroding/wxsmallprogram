@@ -294,6 +294,7 @@ icon {
           flex: 1;
   color: #3CC51F;
   text-align: center;
+  font-size: 30rpx;      /*modfiy by liro*/
 }
 .weui-form-preview__btn:after {
   content: " ";

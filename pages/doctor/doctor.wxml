@@ -9,10 +9,10 @@
 
         <view class="weui-form-preview">
 
-            <view class="weui-form-preview__item">
+            <view class="weui-form-preview__item ">
                     <view class="weui-form-preview__label">医生工作台</view>                   
             </view>
-            <view class="weui-form-preview__ft">
+            <view class="weui-form-preview__ft ">
                 
                 <navigator url=" " class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='doctor_preview' id ='serch'>查看病例</navigator>
 
@@ -62,7 +62,7 @@
                 <view class="weui-form-preview__item">
                     <!-- Case1 -->
                     <view wx:for="{{case1_data}}">
-                        <view class="weui-form-preview__label">{{item.value}}</view>
+                        <view class="casestyle">{{item.value}}</view>
                         <view wx:if = "{{case1[index] == 1}}"> 
                             <view class="weui-form-preview__value">是</view>
                         </view>
@@ -77,7 +77,7 @@
                     <!-- Case2 -->
 
                     <view wx:for="{{case2_data}}">
-                        <view class="weui-form-preview__label">{{item.value}}</view>
+                        <view class="casestyle">{{item.value}}</view>
                         <view wx:if = "{{case2[index] == 1}}"> 
                             <view class="weui-form-preview__value">是</view>
                         </view>
@@ -90,7 +90,7 @@
                     <view class="divLine"></view>
                     <!-- Case3 -->
                     <view wx:for="{{case3_data}}">
-                        <view class="weui-form-preview__label">{{item.value}}</view>
+                        <view class="casestyle">{{item.value}}</view>
                         <view wx:if = "{{case3[index] == 1}}"> 
                             <view class="weui-form-preview__value">是</view>
                         </view>
