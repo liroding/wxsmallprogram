@@ -95,7 +95,7 @@ Page({
       })
       
       if (e.currentTarget.id == 'serch'){
-        console.log('serch')
+        console.log('search')
         reqid = 5
       }else if(e.currentTarget.id == 'next'){
         console.log('next')
@@ -116,19 +116,30 @@ Page({
          success: function (res) {
              console.log(res.data)
              wx.hideLoading()
-             mythis.setData({
-                 name: res.data.name,
-                 sex: res.data.sex,
-                 age: res.data.age,
-                 department: res.data.department,
-                 telephone: res.data.telephone,
-  
-                 case1: res.data.case1,
-                 case2: res.data.case2,
-                 case3: res.data.case3,
-                 caseimglist: res.data.caseimglist,
-  
-          })
+             if (res.data == 'no other match dbcase'){
+              wx.showToast({
+                title: '无新数据可查！' ,  
+                icon: 'fail',
+                duration: 6000//持续的时间
+              })
+
+             }else{
+              mythis.setData({
+                name: res.data.name,
+                sex: res.data.sex,
+                age: res.data.age,
+                department: res.data.department,
+                telephone: res.data.telephone,
+ 
+                case1: res.data.case1,
+                case2: res.data.case2,
+                case3: res.data.case3,
+                caseimglist: res.data.caseimglist,
+ 
+         })
+             }
+             
+
         /*
         wx.navigateTo({
           url: '../feedbackpage/idmesg/idmesg?info=' + res.data,

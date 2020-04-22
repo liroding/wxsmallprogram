@@ -61,7 +61,7 @@
             <view class="weui-form-preview__bd">
                 <view class="weui-form-preview__item">
                     <!-- Case1 -->
-                    <view wx:for="{{case1_data}}">
+                    <view wx:for="{{case1_data}}" wx:key="key">
                         <view class="casestyle">{{item.value}}</view>
                         <view wx:if = "{{case1[index] == 1}}"> 
                             <view class="weui-form-preview__value">是</view>
@@ -76,7 +76,7 @@
                     <view class="divLine"></view> 
                     <!-- Case2 -->
 
-                    <view wx:for="{{case2_data}}">
+                    <view wx:for="{{case2_data}}" wx:key="key">
                         <view class="casestyle">{{item.value}}</view>
                         <view wx:if = "{{case2[index] == 1}}"> 
                             <view class="weui-form-preview__value">是</view>
@@ -89,7 +89,7 @@
                     <!-- 分割线 -->
                     <view class="divLine"></view>
                     <!-- Case3 -->
-                    <view wx:for="{{case3_data}}">
+                    <view wx:for="{{case3_data}}" wx:key="key">
                         <view class="casestyle">{{item.value}}</view>
                         <view wx:if = "{{case3[index] == 1}}"> 
                             <view class="weui-form-preview__value">是</view>
@@ -114,7 +114,7 @@
                 <view class="weui-form-preview__label">病例图</view>
             </view>        
             <view>
-            <block wx:for="{{caseimglist}}"  >             
+            <block wx:for="{{caseimglist}}" wx:key="key">             
                 <view class="weui-uploader__file ">
                         <image class="weui-uploader__img" src="{{item}}" data-index="{{index}}" bindtap=
                    "previewImage">
