@@ -14,49 +14,51 @@ Page({
     department:null,
     telephone:null,
     authsession:null,
-    //case
-    case1:null,
-    case2:null,
-    case3:null,
-    caseimglist:null,
+    //PE
+    PEA:null,
+    PEB:null,
+    PEC:null,
+    PEImglist:null,
+
+    reqid:null,
 
     //弹窗
     showModal:false,
 
     //check doctor type
     checkerdoctorid:null,
-
-    case1_data: [
-      { name: '1-1', value: '颈部疼痛' },
-      { name: '1-2', value: '枕部疼痛'},
-      { name: '1-3', value: '肩痛' },
-      { name: '1-4', value: '上肢疼痛' },   // checked: 'true'
+    //PEA
+    PEA_data: [
+      { name: 'PEA-1', value: '颈部疼痛' },
+      { name: 'PEA-2', value: '枕部疼痛'},
+      { name: 'PEA-3', value: '肩痛' },
+      { name: 'PEA-4', value: '上肢疼痛' },   // checked: 'true'
     ],
-    //2
-    case2_data: [
-      { name: '2-1', value: '早期   <2周' },
-      { name: '2-2', value: '急性   <2周' },
-      { name: '2-3', value: '亚急性 6-12周' },
-      { name: '2-4', value: '慢性   >12周' },
-      { name: '2-5', value: '暂无', checked: 'true' },
+    //PEB
+    PEB_data: [
+      { name: 'PEB-1', value: '早期   <2周' },
+      { name: 'PEB-2', value: '急性   <2周' },
+      { name: 'PEB-3', value: '亚急性 6-12周' },
+      { name: 'PEB-4', value: '慢性   >12周' },
+      { name: 'PEB-5', value: '暂无', checked: 'true' },
     ],
-    case3_data: [
-      { name: '3—1', value: 'X线 -- 正位' },
-      { name: '3-2', value: 'X线 -- 侧位'},
-      { name: '3-3', value: 'X线 -- 后前斜位' },
-      { name: '3-4', value: 'X线 -- 前后斜位' },   // checked: 'true'
-      { name: '3—5', value: 'X线 -- 张口位' },
-      { name: '3-6', value: 'X线 -- 过伸位'},
-      { name: '3-7', value: 'X线 -- 过屈位' },
-      { name: '3-8', value: 'MRI' }, 
-      { name: '3-9', value: 'CT' },   
-      { name: '3-10', value: '颈部血管超声' }, 
-      { name: '3-11', value: '肌电图' },   
+    PEC_data: [
+      { name: 'PEC—1', value: 'X线 -- 正位' },
+      { name: 'PEC-2', value: 'X线 -- 侧位'},
+      { name: 'PEC-3', value: 'X线 -- 后前斜位' },
+      { name: 'PEC-4', value: 'X线 -- 前后斜位' },   // checked: 'true'
+      { name: 'PEC—5', value: 'X线 -- 张口位' },
+      { name: 'PEC-6', value: 'X线 -- 过伸位'},
+      { name: 'PEC-7', value: 'X线 -- 过屈位' },
+      { name: 'PEC-8', value: 'MRI' }, 
+      { name: 'PEC-9', value: 'CT' },   
+      { name: 'PEC-10', value: '颈部血管超声' }, 
+      { name: 'PEC-11', value: '肌电图' },   
     ],
-    Result_1 :'',
-    Result_2 :'',
-    Result_3 :'',
-    Result_4 :'',
+    DiagnoseResult_1 :'',
+    DiagnoseResult_2 :'',
+    DiagnoseResult_3 :'',
+    DiagnoseResult_4 :'',
   },
 
 
@@ -94,12 +96,12 @@ Page({
         title: '获取数据中',
       })
       
-      if (e.currentTarget.id == 'serch'){
-        console.log('search')
-        reqid = 5
-      }else if(e.currentTarget.id == 'next'){
-        console.log('next')
-        reqid = 5
+      if (e.currentTarget.id == 'search_a'){
+        console.log('[liro-debug]: search_a')
+        mythis.data.reqid = 1
+      }else if(e.currentTarget.id == 'search_b'){
+        console.log('[liro-debug]: search_b')
+        mythis.data.reqid = 2
       }
        
       //请求数据库，获取所有提交的信息
@@ -107,7 +109,7 @@ Page({
         url: 'https://dingyinglai.site/wxapp/querymysqldb',
          method: "POST",
          data: {
-            "reqid": 5,    //get all submit information  id = 5
+            "reqid": mythis.data.reqid,    //get all submit information  id = 5
             "authsession": app.globalData.authsession,
          },
          header: {
@@ -131,12 +133,12 @@ Page({
                 department: res.data.department,
                 telephone: res.data.telephone,
  
-                case1: res.data.case1,
-                case2: res.data.case2,
-                case3: res.data.case3,
-                caseimglist: res.data.caseimglist,
+                PEA: res.data.PEA,
+                PEB: res.data.PEB,
+                PEC: res.data.PEC,
+                PEImglist: res.data.PEImglist,
  
-         })
+              })
              }
              
 
@@ -256,37 +258,68 @@ showDialogBtn_consultants: function () {
   * 对话框确认按钮点击事件
   */
   onConfirm: function (e) {
-    wx.showToast({
-      title: '提交成功',
-      icon: 'success',
-      duration: 2000 
+    var mythis = this
+    wx.request({
+      url: 'https://dingyinglai.site/wxapp/diagnoseresultsubmit',
+      method: "POST",
+      data: {
+        "DiagnoseResult_1": mythis.data.DiagnoseResult_1,
+        "DiagnoseResult_2": mythis.data.DiagnoseResult_2,
+        "DiagnoseResult_3": mythis.data.DiagnoseResult_3,
+        "DiagnoseResult_4": mythis.data.DiagnoseResult_4,
+        "authsession": app.globalData.authsession,
+        "checkerdoctorid": mythis.data.checkerdoctorid,
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // post ,it is different get!!!!
+      },
+
+      success: function (res) {
+        console.log(res.data) 
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 2000 
+        })
+        mythis.hideModal();
+        console.log('[liro-debug]:input doctor id = ' + e.currentTarget.id)
+        console.log('[liro-debug] :input data =' + mythis.data.DiagnoseResult_1 + mythis.data.DiagnoseResult_2 + mythis.data.DiagnoseResult_3 + mythis.data.DiagnoseResult_4)
+/*           
+        wx.hideLoading() 
+        wx.navigateTo({
+         // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
+          success: function (res) {
+            // 通过eventChannel向被打开页面传送数据
+            console.log('[liro-debug]: navigate to patientcase feedback page')
+          }
+        })
+*/
+      }
     })
-    this.hideModal();
-    console.log('[liro-debug]:input doctor id = ' + e.currentTarget.id)
-    console.log('[liro-debug] :input data =' + this.data.Result_1 + this.data.Result_2 + this.data.Result_3 + this.data.Result_4)
+
   },
   inputChangeResult_1:function(e){
     //console.log(e.detail.value)
     this.setData({
-      Result_1:e.detail.value
+      DiagnoseResult_1:e.detail.value
     })
   },
   inputChangeResult_2:function(e){
-    //console.log(e.detail.value)
+   // console.log(e.detail.value)
     this.setData({
-      Result_2:e.detail.value
+      DiagnoseResult_2:e.detail.value
     })
   },
   inputChangeResult_3:function(e){
-    //console.log(e.detail.value)
+   // console.log(e.detail.value)
     this.setData({
-      Result_3:e.detail.value
+      DiagnoseResult_3:e.detail.value
     })
   },
   inputChange_option:function(e){
     //console.log(e.detail.value)
     this.setData({
-      Result_4:e.detail.value
+      DiagnoseResult_4:e.detail.value
     })
   },
 

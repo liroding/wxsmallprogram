@@ -8,48 +8,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    itemsdata_1: {},
-    itemsdata_2: {},
-    itemsdata_3: {},
+    PEA_Data: {},
+    PEB_Data: {},
+    PEC_Data: {},
     caseimagesList : [],
     syncflag_items :null,   //sync itemsdata info and caseimages,for navigate to patientcase feedback page
     syncflag_caseimg :null,
     retserverinfo:'',
 
-    //1
-    items: [
-      { name: '1-1', value: '颈部疼痛' },
-      { name: '1-2', value: '枕部疼痛'},
-      { name: '1-3', value: '肩痛' },
-      { name: '1-4', value: '上肢疼痛' },  
+    //1:PEA  items
+    PEA: [
+      { name: 'PEA-1', value: '颈部疼痛' },
+      { name: 'PEA-2', value: '枕部疼痛'},
+      { name: 'PEA-3', value: '肩痛' },
+      { name: 'PEA-4', value: '上肢疼痛' },  
      // { name: '1-5', value: '暂无',checked: 'true'},   // checked: 'true'
     ],
-    //2
-    radioItems: [
-      { name: '2-1', value: '早期   <2周' },
-      { name: '2-2', value: '急性   <2周' },
-      { name: '2-3', value: '亚急性 6-12周' },
-      { name: '2-4', value: '慢性   >12周' },
+    //2:PEB  radioItems
+    PEB: [
+      { name: 'PEB-1', value: '早期   <2周' },
+      { name: 'PEB-2', value: '急性   <2周' },
+      { name: 'PEB-3', value: '亚急性 6-12周' },
+      { name: 'PEB-4', value: '慢性   >12周' },
   //    { name: '2-5', value: '暂无', checked: 'true' },
     ],
-    uploadpicitems: [
-      { name: '3-1', value: 'X线 -- 正位' },
-      { name: '3-2', value: 'X线 -- 侧位'},
-      { name: '3-3', value: 'X线 -- 后前斜位' },
-      { name: '3-4', value: 'X线 -- 前后斜位' },   // checked: 'true'
-      { name: '3-5', value: 'X线 -- 张口位' },
-      { name: '3-6', value: 'X线 -- 过伸位'},
-      { name: '3-7', value: 'X线 -- 过屈位' },
-      { name: '3-8', value: 'MRI' }, 
-      { name: '3-9', value: 'CT' },   
-      { name: '3-10', value: '颈部血管超声' }, 
-      { name: '3-11', value: '肌电图' },   
+    //3:PEC uploadpicitems
+    PEC: [
+      { name: 'PEC-1', value: 'X线 -- 正位' },
+      { name: 'PEC-2', value: 'X线 -- 侧位'},
+      { name: 'PEC-3', value: 'X线 -- 后前斜位' },
+      { name: 'PEC-4', value: 'X线 -- 前后斜位' },   // checked: 'true'
+      { name: 'PEC-5', value: 'X线 -- 张口位' },
+      { name: 'PEC-6', value: 'X线 -- 过伸位'},
+      { name: 'PEC-7', value: 'X线 -- 过屈位' },
+      { name: 'PEC-8', value: 'MRI' }, 
+      { name: 'PEC-9', value: 'CT' },   
+      { name: 'PEC-10', value: '颈部血管超声' }, 
+      { name: 'PEC-11', value: '肌电图' },   
     ],
     
-    //4
-    MechanicalItems: [
-      { name: '4-1', value: '麦肯基' },
-      { name: '4-2', value: 'FMS'},
+    //4:PED  MechanicalItems
+    PED: [
+      { name: 'PED-1', value: '麦肯基' },
+      { name: 'PED-2', value: 'FMS'},
 
      // { name: '1-5', value: '暂无',checked: 'true'},   // checked: 'true'
     ],
@@ -126,37 +127,46 @@ Page({
     img: '/resources/index_bakcup/1.png'
   },
 
-  checkboxChange_1: function (e) {
+  _bindPEA: function (e) {
     var mythis = this 
-    console.log('checkboxChange_1发送选择改变，携带值为', e.detail.value)
+    console.log('_bindPEA 发送选择改变，携带值为', e.detail.value)
     this.setData({
-      itemsdata_1: e.detail.value
+      PEA_Data: e.detail.value
     })
   },
-  checkboxChange_2: function (e) {
+  _bindPEB: function (e) {
     var checked = e.detail.value
-    console.log('radioChange 发送选择改变，携带值为', e.detail.value)
+    console.log('_bindPEB 发送选择改变，携带值为', e.detail.value)
     var changed = {}
-    for (var i = 0; i < this.data.radioItems.length; i++) {
-      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
-        changed['radioItems[' + i + '].checked'] = true
+    for (var i = 0; i < this.data.PEB.length; i++) {
+      if (checked.indexOf(this.data.PEB[i].name) !== -1) {
+        changed['PEB[' + i + '].checked'] = true
       } else {
-        changed['radioItems[' + i + '].checked'] = false
+        changed['PEB[' + i + '].checked'] = false
       }
     }
     this.setData(changed)
     this.setData({
-      itemsdata_2: e.detail.value
+      PEB_Data: e.detail.value
     })
   },
 
-  checkboxChange_3: function (e) {
+  _bindPEC: function (e) {
     var mythis = this 
-    console.log('checkboxChange_1发送选择改变，携带值为', e.detail.value)
+    console.log('_bindPEC 发送选择改变，携带值为', e.detail.value)
     this.setData({
-      itemsdata_3: e.detail.value
+      PEC_Data: e.detail.value
     })
   },
+
+  _bindPED: function (e) {
+    var mythis = this 
+    console.log('_bindPED 发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      PED_Data: e.detail.value
+    })
+  },
+
 /*
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -176,9 +186,11 @@ Page({
 
   formSubmit: function (e) {
     var mythis = this
-    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata=', mythis.data.itemsdata_1)
-    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata_2=', mythis.data.itemsdata_2)
-    console.log('[liro-debug]:form发生了submit事件，携带数据为itemsdata_3=', mythis.data.itemsdata_3)
+    console.log('[liro-debug]:form发生了submit事件，携带数据为PEA_Data=', mythis.data.PEA_Data)
+    console.log('[liro-debug]:form发生了submit事件，携带数据为PEB_Data=', mythis.data.PEB_Data)
+    console.log('[liro-debug]:form发生了submit事件，携带数据为PEC_Data=', mythis.data.PEC_Data)
+    console.log('[liro-debug]:form发生了submit事件，携带数据为PED_Data=', mythis.data.PED_Data)
+
     wx.showModal({
       title: '提示',
       content: '再确认是否提交',
@@ -197,9 +209,9 @@ Page({
             url: 'https://dingyinglai.site/wxapp/patientcasemesgsubmit',
             method: "POST",
             data: {
-              "itemsdata_1": mythis.data.itemsdata_1,
-              "itemsdata_2": mythis.data.itemsdata_2,
-              "itemsdata_3": mythis.data.itemsdata_3,
+              "PEA_Data": mythis.data.PEA_Data,
+              "PEB_Data": mythis.data.PEB_Data,
+              "PEC_Data": mythis.data.PEC_Data,
               "authsession": app.globalData.authsession,
             },
             header: {

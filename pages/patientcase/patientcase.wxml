@@ -13,8 +13,8 @@
       <view class="section">
         <view class="section__title">1. 是否出现以下症状</view>
         <view class="weui-cell weui-cell_input">
-        <checkbox-group bindchange="checkboxChange_1">
-            <label class="checkbox" wx:for="{{items}}" wx:key="key">
+        <checkbox-group bindchange="_bindPEA">
+            <label class="checkbox" wx:for="{{PEA}}" wx:key="key">
                 <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
                 <view></view>
             </label>
@@ -26,8 +26,8 @@
         <view class="section__title">2. 病程选择</view>
         <view class="weui-cell weui-cell_input">
           <view class="section section_gap">
-          <radio-group class="group" bindchange="checkboxChange_2">
-              <view class="label-2" wx:for="{{radioItems}}" wx:key="key">
+          <radio-group class="group" bindchange="_bindPEB">
+              <view class="label-2" wx:for="{{PEB}}" wx:key="key">
                 <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
                 <view class="label-2__icon">
                   <view class="label-2__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
@@ -42,13 +42,13 @@
       <view class="section">
         <view class="section__title">3. 检查材料提交</view>
         <view class="weui-cell weui-cell_input">
-          <checkbox-group bindchange="checkboxChange_3">
-            <label class="checkbox" wx:for="{{uploadpicitems}}" wx:key="key">
+          <checkbox-group bindchange="_bindPEC">
+            <label class="checkbox" wx:for="{{PEC}}" wx:key="key">
                 <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-                        <view wx:if="{{item.name == '3-10'}}">
+                        <view wx:if="{{item.name == 'PEC-10'}}">
                               <input class="weui-input" placeholder-style="color:#F76260" name="other"  placeholder="选填说明"/>
                         </view>      
-                        <view wx:elif="{{item.name == '3-11'}}">
+                        <view wx:elif="{{item.name == 'PEC-11'}}">
                               <input class="weui-input" placeholder-style="color:#F76260" name="other"  placeholder="选填说明"/>
                         </view>        
                 <view></view>
@@ -76,12 +76,11 @@
         </view>
       </view> 
 
-
       <view class="section">
         <view class="section__title">4. 力学评估</view>
         <view class="weui-cell weui-cell_input">
-        <checkbox-group bindchange="checkboxChange_1">
-            <label class="checkbox" wx:for="{{MechanicalItems}}" wx:key="key">
+        <checkbox-group bindchange="_bindPED">
+            <label class="checkbox" wx:for="{{PED}}" wx:key="key">
                 <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
                 <view></view>
             </label>
