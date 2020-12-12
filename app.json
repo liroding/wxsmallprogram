@@ -6,13 +6,14 @@
     "pages/doctor/doctor",
     "pages/patientcase/patientcase",
    
-
     "pages/idmessage/idmessage",
 
-    "pages/index/index",
+    "pages/patient_homepage/patient_homepage",
+
+    "pages/doctor_homepage/doctor_homepage",
 
     "pages/introducearticle/introducearticle",
-  
+
     "pages/testpage/test",
 
     "pages/download/download",
@@ -22,8 +23,9 @@
     "pages/feedbackpage/patientcase/patientcase",
     "pages/feedbackpage/feedback/feedback",
 
-    "pages/Preview/Preview"
-  
+    "pages/Preview/Preview",
+    "pages/passwordbox/passwordbox"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

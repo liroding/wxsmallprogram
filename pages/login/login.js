@@ -42,7 +42,8 @@ Page({
           flag:1   //add by liro new
         })
         wx.navigateTo({
-          url: '../index/index'
+         // url: '../index/index'
+         url: '../userselection/userselection'
         })
       }
     } else {
@@ -114,7 +115,9 @@ bindGetUserInfo: function (res) {
                   //console.log('<debug>' + info.detail.userInfo.nickName)
                   wx.hideLoading()
                   wx.redirectTo({
-                    url: '../index/index'
+                    // url: '../index/index'
+                    url: '../userselection/userselection'
+
                   })
                 }
               })
@@ -158,7 +161,7 @@ bindGetUserInfo: function (res) {
 
 bindViewTap: function () {
   wx.navigateTo({
-    url: '/pages/index/index'
+    url: '/pages/userselection/userselection'
   })
 },
 
