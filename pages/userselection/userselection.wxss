@@ -1,5 +1,5 @@
 @import '../../lib/weui.wxss';
-@import '/pages/patient_homepage/patient_homepage.wxss';
+@import '/pages/patient/patient_homepage/patient_homepage.wxss';
 .placeholder{
   margin: 5px;
   padding: 0 10px;
