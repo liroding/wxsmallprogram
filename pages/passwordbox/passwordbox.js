@@ -34,7 +34,7 @@ hidePayLayer: function(){
             })
             wx.navigateTo({
               // url: '../index/index'
-              url: '/pages/doctor_homepage/doctor_homepage'
+              url: '/pages/doctor/doctor_homepage/doctor_homepage'
             })
 
           }else{
