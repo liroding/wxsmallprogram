@@ -58,7 +58,7 @@ Page({
               wx.hideLoading()
 
               wx.redirectTo({
-                url: '../feedbackpage/idmesg/idmesg?info=' + res.data,
+                url: '/pages/feedbackpage/idmesg/idmesg?info=' + res.data,
                 success: function (res) {
                   // 通过eventChannel向被打开页面传送数据
                   console.log('[liro-debug]: navigate to idmesg feedback page')
