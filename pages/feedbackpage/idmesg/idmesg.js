@@ -26,7 +26,7 @@ Page({
                 console.log('[liro-debug]: 服务器返回')
                 
                 wx.reLaunch({
-                  url: '/pages/index/index',
+                  url: '/pages/patient/patient_homepage/patient_homepage',
                   success: function (res) {
                     // 通过eventChannel向被打开页面传送数据
                     console.log('[liro-debug]: navigate to feedback page')
@@ -35,6 +35,8 @@ Page({
                 
 
             }
+
+            
           }
       })
 

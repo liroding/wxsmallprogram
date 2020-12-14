@@ -6,6 +6,6 @@
       <text>{{info}}</text>
   </view>
   <view class="btn-area section">
-      <navigator url="/pages/index/index" hover-class="navigator-hover">回首页</navigator>
+      <navigator url="/pages/patient/patient_homepage/patient_homepage" hover-class="navigator-hover">回首页</navigator>
   </view>
 </view>

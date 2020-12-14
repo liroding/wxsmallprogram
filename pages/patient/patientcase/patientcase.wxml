@@ -28,11 +28,16 @@
           <view class="section section_gap">
           <radio-group class="group" bindchange="_bindPEB">
               <view class="label-2" wx:for="{{PEB}}" wx:key="key">
-                <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{{item.checked}}"></radio>
-                <view class="label-2__icon">
-                  <view class="label-2__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
-                </view>
-                <label class="label-2__text" for="{{item.name}}"><text>{{item.value}}</text></label>
+                     <radio id="{{item.name}}" hidden value="{{item.name}}" checked="{      {item.checked}}">
+                     </radio>
+
+                     <view class="label-1__icon">
+                        <view class="label-2__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
+                     </view>
+
+                     <label class="label-2__text" for="{{item.name}}">
+                         <text>{{item.value}}</text>
+                     </label>
               </view>
           </radio-group>
         </view>

@@ -52,6 +52,17 @@ Page({
    */
   onLoad: function (options) {
   var authsession = wx.getStorageSync('authsession')
+
+  if(authsession.length == 0){
+
+    wx.showToast({
+      title: '小程序过期，请删除之后，再扫描进入\r\n' ,
+      icon: 'none',
+      duration: 5000//持续的时间
+    })
+
+  }
+       
   app.globalData.authsession = authsession
 
   this.setData({
@@ -59,13 +70,6 @@ Page({
     })
   console.log("[liro-debug]:index page onload")
   console.log("[liro-debug]:index page app.globalData.authsession =" + app.globalData.authsession)
-
-  wx.showToast({
-    title: '使用说明：1> 首填写【个人信息登记】\r\n \
-                     2> 再填写【健康诊断表】' ,  
-    icon: 'none',
-    duration: 3000//持续的时间
-  })
 
 
   },

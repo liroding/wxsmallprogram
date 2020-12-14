@@ -1,16 +1,17 @@
 {
   "pages": [
     
-   
     "pages/login/login",
-    "pages/doctor/doctor",
-    "pages/patientcase/patientcase",
+    "pages/doctor/doctor_handle/doctor_handle",
+
    
     "pages/idmessage/idmessage",
 
-    "pages/patient_homepage/patient_homepage",
+    "pages/patient/patient_homepage/patient_homepage",
+    "pages/patient/patientcase/patientcase",
+    "pages/patient/patient_treatment/patient_treatment",
 
-    "pages/doctor_homepage/doctor_homepage",
+    "pages/doctor/doctor_homepage/doctor_homepage",
 
     "pages/introducearticle/introducearticle",
 
