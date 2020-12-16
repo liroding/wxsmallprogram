@@ -73,9 +73,9 @@ Page({
       console.log('[LIRO-DEBUG]:' + index)
       wx.previewImage({  
         //当前显示下表   
-        current: this.data.caseimglist[index],   
+        current: this.data.PEImglist[index],   
         //数据源   
-        urls: this.data.caseimglist
+        urls: this.data.PEImglist
         }) 
     },
 
@@ -88,7 +88,7 @@ Page({
     
       mythis.data.sex = null
 
-      mythis.data.caseimglist = null
+      mythis.data.PEImglist = null
 
 
       this.setData({

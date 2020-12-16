@@ -116,8 +116,7 @@
             <view>
             <block wx:for="{{PEImglist}}" wx:key="key">             
                 <view class="weui-uploader__file ">
-                        <image class="weui-uploader__img" src="{{item}}" data-index="{{index}}" bindtap=
-                   "previewImage">
+                        <image class="weui-uploader__img" src="{{item}}" data-index="{{index}}" bindtap="previewImage">
                   </image>
                 </view>
             </block>   

@@ -258,7 +258,7 @@ Page({
                   },
                   formData: {
                     'authsession': app.globalData.authsession,
-                    "uploadid"  : 3,
+                    "uploadid"  : 1,
                     "casepicid" : i,
                   },
                   success:function(data){

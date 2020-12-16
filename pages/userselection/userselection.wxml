@@ -34,9 +34,9 @@
         <view class="weui-flex">
 
             <view class="weui-flex__item">
-            <view class="placeholder">患者
+            <view class="placeholder"  >患者
             <navigator  url="/pages/patient/patient_homepage/patient_homepage"  >
-            <image class="weui-grid__icon" src="/resources/index_bakcup/1.png" />  
+            <image  class="weui-grid__icon" src="/resources/index_bakcup/1.png" />  
             </navigator>
             </view>
             </view>

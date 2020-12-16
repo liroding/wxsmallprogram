@@ -60,9 +60,13 @@ Page({
       icon: 'none',
       duration: 5000//持续的时间
     })
+    //authsession 过期，退回最始页面位置
+    
 
   }
-       
+   
+  
+
   app.globalData.authsession = authsession
 
   this.setData({
