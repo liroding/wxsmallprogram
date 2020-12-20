@@ -1,10 +1,14 @@
 {
   "pages": [
-    
+
+    "pages/index/index",
+
     "pages/login/login",
+
+
     "pages/doctor/doctor_handle/doctor_handle",
 
-   
+
     "pages/idmessage/idmessage",
 
     "pages/patient/patient_homepage/patient_homepage",
@@ -31,7 +35,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "信息采集系统",
+    "navigationBarTitleText": "精准达系统",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh":true
   },

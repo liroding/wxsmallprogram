@@ -55,75 +55,6 @@ Page({
      // { name: '1-5', value: '暂无',checked: 'true'},   // checked: 'true'
     ],
 
-    /*
-    //3
-    array: ['美国', '中国', '巴西', '日本'],
-    objectArray: [
-      {
-        id: 0,
-        name: '美国'
-      },
-      {
-        id: 1,
-        name: '中国'
-      },
-      {
-        id: 2,
-        name: '巴西'
-      },
-      {
-        id: 3,
-        name: '日本'
-      }
-    ],
-
-    //4
-    index: 0,
-    multiArray: [['无脊柱动物', '脊柱动物'], ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'], ['猪肉绦虫', '吸血虫']],
-    objectMultiArray: [
-      [
-        {
-          id: 0,
-          name: '无脊柱动物'
-        },
-        {
-          id: 1,
-          name: '脊柱动物'
-        }
-      ], [
-        {
-          id: 0,
-          name: '扁性动物'
-        },
-        {
-          id: 1,
-          name: '线形动物'
-        },
-        {
-          id: 2,
-          name: '环节动物'
-        },
-        {
-          id: 3,
-          name: '软体动物'
-        },
-        {
-          id: 3,
-          name: '节肢动物'
-        }
-      ], [
-        {
-          id: 0,
-          name: '猪肉绦虫'
-        },
-        {
-          id: 1,
-          name: '吸血虫'
-        }
-      ]
-    ],
-    multiIndex: [0, 0, 0],
-*/
     img: '/resources/index_bakcup/1.png'
   },
 
@@ -167,21 +98,7 @@ Page({
     })
   },
 
-/*
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      index: e.detail.value
-    })
-  },
 
-  bindMultiPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      multiIndex: e.detail.value
-    })
-  },
-  */
 
 
   formSubmit: function (e) {
@@ -225,16 +142,7 @@ Page({
               console.log('nihoa')
               return resolve(mythis.data.syncflag_items)
               
-  /*           
-              wx.hideLoading() 
-              wx.navigateTo({
-               // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
-                success: function (res) {
-                  // 通过eventChannel向被打开页面传送数据
-                  console.log('[liro-debug]: navigate to patientcase feedback page')
-                }
-              })
-*/
+
             }
           })
         });
@@ -311,32 +219,6 @@ Page({
 
 
 
-
-
-   //////////////////////////////////////////////////////////////////////////
-
-/*
-          console.log(mythis.data.syncflag_items)
-          console.log(mythis.data.syncflag_caseimg)
-          //判断提交状态flag去反馈信息
-          while ((mythis.data.syncflag_items !=1) && (mythis.data.syncflag_caseimg != 1)) 
-          {
-            console.log('enter')
-            wx.hideLoading()
-            wx.navigateTo({
-            // url: '../feedbackpage/patientcase/patientcase?info=' + res.data,
-            success: function (res) {
-                // 通过eventChannel向被打开页面传送数据
-                console.log('[liro-debug]: navigate to patientcase feedback page')
-            }
-            })
-            mythis.data.syncflag_items = 0
-            mythis.data.syncflag_caseimg = 0
-
-          }        
-
-*/
-
         } else {//这里是点击了取消以后
           console.log('[liro-debug]:不提交')
         }
@@ -353,7 +235,7 @@ selectcaseimg:function(){
       let maxSize=1024*1024;
       let maxLength=11; 
       let flag=true;
-      console.log('nihao')
+      console.log('[liro-debug]: patientcase page select image upload')
       wx.chooseImage({
             count: 11, //最多可以选择的图片总数
             sizeType: ['original','compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -448,7 +330,8 @@ chooseWxImage: function (type) {
         filePath: res.tempFilePaths[0],
         name: 'file',
         formData: {
-          'authsession': authsession
+          'authsession': authsession,
+          "uploadid"  : 2,
         },
         success(res) {
           const data = res.data

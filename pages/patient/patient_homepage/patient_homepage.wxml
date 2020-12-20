@@ -44,13 +44,13 @@
         <image class="weui-grid__icon" src="/resources/index_bakcup/2.png" />
         <view class="weui-grid__label">病情录入</view>
       </navigator>
-
+<!--
       <navigator url="/pages/Preview/Preview" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/3.jpg" />
         <view class="weui-grid__label" bindtap='Preview_message'>表单确认</view>
       </navigator>
 
-<!--
+
       <view wx:if="{{userInfo.nickName == 'ding-丁'}}">
       <navigator url="/pages/doctor/doctor" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="/resources/index_bakcup/4.jpg" />

@@ -2,12 +2,36 @@
 // pages/index_bakcup/index.js
 const app = getApp()
 
+var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
+    tabs: ["微信授权", "编号验证"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0,
+
+
+    items: [
+      {name: 'agreeflag', value: '阅读并同意以下协议', checked: 'false'},
+    ],
+    _globalagreeflag:0,
+
+    background: ['/resources/index_bakcup/headpic_1.jpg', '/resources/index_bakcup/headpic_2.jpg', '/resources/index_bakcup/headpic_3.jpg'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: false,
+    interval: 2000,
+    duration: 500,
+    previousMargin: 0,
+    nextMargin: 0,
+
     motto: 'Every Step Is Progress',
     userInfo: {},
     hasUserInfo: false,
@@ -19,44 +43,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   console.log('onload')
+
+    console.log('[liro-debug]: <login page> onload')
     if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-        flag: 1   //add by liro new
-      })
-      wx.navigateTo({
-        url: 'pages/userselection/userselection'
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        app.globalData.userInfo = res.userInfo
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-          flag:1   //add by liro new
-        })
-        wx.navigateTo({
-         // url: '../index/index'
-         url: '../userselection/userselection'
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+
+      wx.showModal({
+        title: '注册提示',
+        content: '您已微信授权，点击确认按钮，直接进入',
+        success: function (res) {
+          if (res.confirm) {//这里是点击了确定以后
+            console.log('[liro-debug]:确认授权') 
+            wx.navigateTo({
+              url: '/pages/userselection/userselection'
+            })
+
+          } else {//这里是点击了取消以后
+            console.log('[liro-debug]:不授权')
+          }
         }
       })
-    } 
+
+    }
+
+    var that = this;
+    wx.getSystemInfo({
+        success: function(res) {
+            that.setData({
+                sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+                sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+            });
+        }
+    });
+
+
+
   },
+
+
+  tabClick: function (e) {
+    this.setData({
+        sliderOffset: e.currentTarget.offsetLeft,
+        activeIndex: e.currentTarget.id
+    });
+},
+
+
   getUserInfo: function (e) {
        console.log(e) 
       // 可以将 res 发送给后台解码出 unionId
@@ -71,11 +102,11 @@ Page({
 
 //按钮的点击事件
 bindGetUserInfo: function (res) {
+      var mythis = this 
       let info = res;
       console.log(info);
-
-      if (info.detail.userInfo) {
-       
+      if (mythis.data._globalagreeflag == 'agreeflag'){
+        if (info.detail.userInfo) {
           console.log("[liro-debug]:点击了同意授权");
           app.globalData.userInfo = info.detail.userInfo
           var that = this
@@ -140,9 +171,9 @@ bindGetUserInfo: function (res) {
         })
 
 
-  } else {
-          //用户按了拒绝按钮
-        wx.showModal({
+        } else {
+              //用户按了拒绝按钮
+              wx.showModal({
                     title: '警告',
                     content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
                     showCancel: false,
@@ -153,7 +184,20 @@ bindGetUserInfo: function (res) {
                           }
                         }
                     })
-        }
+              }
+      }
+      else{
+        wx.showModal({
+          content: '请确认是否同意如下协议', 
+          showCancel:false,
+          success:function(res){ 
+          if(res.confirm){ 
+                console.log('[liro-debug]: 点击了确定按钮');
+          }
+          }
+         })
+      }
+
 },
 
 
@@ -163,12 +207,21 @@ bindViewTap: function () {
   })
 },
 
+_bindlogin: function (e) {
+  var mythis = this 
+  console.log('_bindlogin 发送选择改变，携带值为', e.detail.value)
+  this.setData({
+    _globalagreeflag: e.detail.value
+  })
+},
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('onready')
+
+    console.log('[liro-debug]: <login page> onready')
     
   },
 
@@ -176,7 +229,8 @@ bindViewTap: function () {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      console.log("onshow")
+      console.log('[liro-debug]: <login page> onshow') 
+
   },
 
   /**

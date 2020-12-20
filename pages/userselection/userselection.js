@@ -61,8 +61,25 @@ Page({
       duration: 5000//持续的时间
     })
     //authsession 过期，退回最始页面位置
-    
 
+    wx.showModal({
+      title: '登陆提示',
+      content: '未授权，点击确认按钮，返回注册',
+      success: function (res) {
+        if (res.confirm) {//这里是点击了确定以后
+          console.log('[liro-debug]:确认授权') 
+          wx.navigateTo({
+            url: '/pages/index/index'
+          })
+
+        } else {//这里是点击了取消以后
+          console.log('[liro-debug]:不授权')
+        }
+      }
+    })
+
+
+    
   }
    
   
@@ -72,8 +89,8 @@ Page({
   this.setData({
       userInfo: app.globalData.userInfo,
     })
-  console.log("[liro-debug]:index page onload")
-  console.log("[liro-debug]:index page app.globalData.authsession =" + app.globalData.authsession)
+  console.log("[liro-debug]:userselection page onload")
+  console.log("[liro-debug]:userselection page app.globalData.authsession =" + app.globalData.authsession)
 
 
   },
@@ -92,7 +109,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('[liro-debug]:index page onready')
+    console.log('[liro-debug]:userselection page onready')
     
   },
 
@@ -100,7 +117,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("[liro-debug]:index page onshow")
+    console.log("[liro-debug]:userselection page onshow")
   },
 
   /**
